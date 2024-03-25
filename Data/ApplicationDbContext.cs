@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Ecouni_Projeto.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ecouni_Projeto.Data
@@ -9,5 +10,7 @@ namespace Ecouni_Projeto.Data
             : base(options)
         {
         }
+
+        public DbSet<Cadastrar> Cadastrar { get; set; }
     }
 }
