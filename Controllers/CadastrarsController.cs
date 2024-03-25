@@ -7,11 +7,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Ecouni_Projeto.Data;
 using Ecouni_Projeto.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ecouni_Projeto.Controllers
 {
+    [Authorize]
     public class CadastrarsController : Controller
     {
+       
         private readonly ApplicationDbContext _context;
 
         public CadastrarsController(ApplicationDbContext context)

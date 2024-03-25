@@ -12,15 +12,15 @@ namespace Ecouni_Projeto.Models
         public string Nome { get; set; }
 
         [Required]
-        public decimal Email { get; set; }
+        public string Email { get; set; }
 
         [Required]
         public int Telefone { get; set; }
 
         [Required]
-        public decimal Senha { get; set; }
+        public string Senha { get; set; }
 
         [Required]
-        public decimal ConfirmarSenha { get; set; }
+        public string ConfirmarSenha { get; set; }
     }
 }
