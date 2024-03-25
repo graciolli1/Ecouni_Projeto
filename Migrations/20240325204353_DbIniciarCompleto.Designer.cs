@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Ecouni_Projeto.Data.Migrations
+namespace Ecouni_Projeto.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240325152301_DbModelos")]
-    partial class DbModelos
+    [Migration("20240325204353_DbIniciarCompleto")]
+    partial class DbIniciarCompleto
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,19 +33,22 @@ namespace Ecouni_Projeto.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Cadastrarid"));
 
-                    b.Property<decimal>("ConfirmarSenha")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("ConfirmarSenha")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Email")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<decimal>("Senha")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Telefone")
                         .HasColumnType("int");
