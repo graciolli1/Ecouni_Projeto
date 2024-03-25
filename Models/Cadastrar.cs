@@ -21,6 +21,7 @@ namespace Ecouni_Projeto.Models
         public string Senha { get; set; }
 
         [Required]
+        [Display(Name = "Confirmar Senha")]
         public string ConfirmarSenha { get; set; }
     }
 }
