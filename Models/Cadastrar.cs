@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Authorization;
+using System.ComponentModel.DataAnnotations;
 
 namespace Ecouni_Projeto.Models
 {
     public class Cadastrar
     {
-        
         public int Cadastrarid { get; set; }
 
         [Required]
