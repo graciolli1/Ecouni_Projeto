@@ -12,5 +12,8 @@ namespace Ecouni_Projeto.Data
         }
 
         public DbSet<Cadastrar> Cadastrar { get; set; }
+        public DbSet<DownloadApp> DownloadApps { get; set; }
+        public DbSet<SobreNos> SobreNos { get; set; }
+        public DbSet<Contato> Contatos { get; set; }
     }
 }
