@@ -16,9 +16,7 @@ namespace Ecouni_Projeto.Controllers
         public IActionResult Index()
         {
             return View();
-        }
-
-        public IActionResult Privacy()
+        } public IActionResult SobreNos()
         {
             return View();
         }

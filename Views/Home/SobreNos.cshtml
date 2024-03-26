@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Sobre Nós</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .fixed-bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: -1;
+        }
+
+        .fixed-bottom img {
+                width: 100%;
+                display: block;
+        } 
+
+
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="fixed-bottom">
+            <img src="~/telafundo.png" alt="Background Image" />
+        </div>
+        <div class="container">
+            <header>
+                <h1>Sobre Nós</h1>
+            </header>
+            <section>
+                <h2>Quem Somos</h2>
+                <p>Somos uma equipe dedicada a criar soluções inovadoras para nossos clientes.</p>
+            </section>
+            <section>
+                <h2>Nossa Missão</h2>
+                <p>Nossa missão é fornecer produtos e serviços de alta qualidade que atendam às necessidades de nossos clientes.</p>
+            </section>
+            <section>
+                <h2>Nossa Equipe</h2>
+                <p>Temos uma equipe talentosa composta por desenvolvedores, designers e especialistas em marketing.</p>
+            </section>
+        </div>
+    </form>
+</body>
+</html>
