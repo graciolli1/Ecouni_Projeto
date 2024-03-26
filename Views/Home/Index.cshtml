@@ -10,37 +10,50 @@
     ul, ellipse, li{
         list-style: none;
     }
-
-    .header{
-        box-sizing: border-box;
-        padding: 20px 40px;
-        border-bottom: 1px solid #222f3e;
-        margin-bottom: 30px; 
-    }
-    .header-logo {
-        height: 50px;
-    }
-    .banner {
-        background-color: #5f27cd;
-        color: #fff;
-        text-transform: uppercase;
-        text-align: center;
-        widht: 200px;
-        line-height: 200px;
-    }
+   
     .button {
-        display: block;
-        width: 160px;
-        height: 40px;
-        opacity: 0.95;
-        height: 60px;
-        line-height: 60px;
-        text-align: center;
-        color: #fff;
-        text-decoration: none;
-        text-transform: uppercase;
-        background-color: #21689E;
+        border-radius: 10px; /* Reduzindo o raio para tornar os cantos mais arredondados */
+        background-color: #21689E; /* Cor de fundo */
+        border: none; /* Remova a borda */
+        color: white; /* Cor do texto */
+        padding: 10px 20px; /* Diminuindo o espaçamento interno */
+        text-align: center; /* Alinhar texto ao centro */
+        text-decoration: none; /* Remover decoração de texto */
+        display: inline-block; /* Exibir como bloco */
+        font-size: 14px; /* Reduzindo o tamanho da fonte */
+        margin: 4px 2px; /* Margem externa */
+        cursor: pointer; /* Cursor do mouse */
+        position: fixed;
+        bottom: 200px; /* Distância em relação ao fundo da janela */
+        left: 100px; /* Distância em relação à borda esquerda da janela */
     }
+
+    .conteudo {
+        position: fixed; /* Define a posição fixa em relação à janela do navegador */
+        bottom: 290px; /* Distância em relação ao fundo da janela */
+        left: 100px; /* Distância em relação à borda esquerda da janela */
+        color: #333; /* Cor do texto */
+    }
+
+    .conteudo h2 {
+        margin-bottom: 5px; /* Margem inferior para separação do parágrafo */
+    }
+
+    .conteudo p {
+        margin: 0; /* Remover margem padrão */
+    }
+
+    .container {
+        width: 300%; /* Largura do container */
+        margin: 0 auto; /* Centraliza o container na página */
+    }
+
+    img {
+        float: right; /* Posiciona a imagem à direita */
+    }
+
+
+    
     
 
 
@@ -59,29 +72,24 @@
 
 
 <body>
-    <header class="header">
-        <img class="header-logo" src="~/logoboaa.png" alt="logo do ecouni" />
-    </header>
-
-    <article>
+    <div class="container">
+        <img src="~/imageminicio.png" alt="Descrição da imagem">
+    </div>
+    <div class="conteudo">
         <h1>Reciclagem de Resíduos</h1>
         <p>
-            Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora 
-            torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis.
+            Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, <br> ac aliquet odio mattis. Class aptent taciti sociosqu ad litora
+            torquent per conubia nostra, per inceptos himenaeos. <br>Curabitur tempus urna at turpis condimentum lobortis.
         </p>
         <p>
-            Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora 
-            torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis.
+            Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum,<br> ac aliquet odio mattis. Class aptent taciti sociosqu ad litora
+            torquent per conubia nostra, per inceptos himenaeos. <br>Curabitur tempus urna at turpis condimentum lobortis.
         </p> 
         <p>
-            Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora 
-            torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis.
+            Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum,<br> ac aliquet odio mattis. Class aptent taciti sociosqu ad litora
+            torquent per conubia nostra, per inceptos himenaeos.<br> Curabitur tempus urna at turpis condimentum lobortis.
         </p>
-    </article>
-
-    <aside class="banner">
-        útimo video
-    </aside>
+    </div>
 
     <a class="button" href="">Ler Mais</a>
 
