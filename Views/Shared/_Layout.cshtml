@@ -11,10 +11,12 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-               <a href="https://localhost:7091">
+            <div class="logocima">
+                <a href="https://localhost:7091">
                     <img src="~/logoboaa.png" />
-               </a>
+                </a>
+            </div>
+            <div class="container-fluid">
                 @*<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EcoUni</a>*@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -122,8 +124,11 @@
         max-width: 60%; /* Limita a largura da imagem */
         max-height: 60%; /* Limita a altura da imagem */
     }
+    .logocima {
 
-
+        height: 60%;
+        width: 60%;
+    }
 
 </style>
 
