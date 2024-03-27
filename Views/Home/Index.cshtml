@@ -1,16 +1,5 @@
-﻿<style>
-    * {
-        margin: 0;
-        padding: 0;
-        border: 0;
+﻿<style> 
     }
-    body {
-        font-family: "Open Sans", sans-serif;
-    }
-    ul, ellipse, li{
-        list-style: none;
-    }
-   
     .button {
         border-radius: 10px; /* Reduzindo o raio para tornar os cantos mais arredondados */
         background-color: #21689E; /* Cor de fundo */
@@ -26,57 +15,47 @@
         bottom: 200px; /* Distância em relação ao fundo da janela */
         left: 100px; /* Distância em relação à borda esquerda da janela */
     }
-
-    .conteudo {
-z       bottom: 290px; /* Distância em relação ao fundo da janela */
-        left: 100px; /* Distância em relação à borda esquerda da janela */
-        color: #333; /* Cor do texto */
+    .imagem {
+        right: 10px;
+        position: relative;
     }
-
-    .conteudo h2 {
-        margin-bottom: 5px; /* Margem inferior para separação do parágrafo */
+    .texto {
+        position: relative;
+        right: 10px;
+        top: 10px;
+    } 
+    img {
+        left: 600px;
+        position: relative;
+        resize: -1;
     }
-
-    .conteudo p {
-        margin: 0; /* Remover margem padrão */
-    }
-
-    .container {
-        width: 0%; /* Largura do container */
-        margin-left: 120px; /* Adiciona um espaço à esquerda da imagem para evitar que o texto fique muito próximo */
-    }
-
-
-
-    
-   </style>
+</style>
 
 
 
 
 <body>
-    <div class="container">
-        <img src="~/imageminicio.png" alt="Descrição da imagem">
+    <div class="imagem">
+         <img src="~/imageminicio.png" alt="Descrição da imagem" width="70%" height="70%">
+
+         <h1>Reciclagem de Resíduos</h1>
+          <p>
+             Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, <br> ac aliquet odio mattis. Class aptent taciti sociosqu ad litora
+             torquent per conubia nostra, per inceptos himenaeos. <br>Curabitur tempus urna at turpis condimentum lobortis.
+          </p>
+          <p>
+             Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum,<br> ac aliquet odio mattis. Class aptent taciti sociosqu ad litora
+             torquent per conubia nostra, per inceptos himenaeos. <br>Curabitur tempus urna at turpis condimentum lobortis.
+          </p>
+          <p>
+              Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum,<br> ac aliquet odio mattis. Class aptent taciti sociosqu ad litora
+              torquent per conubia nostra, per inceptos himenaeos.<br> Curabitur tempus urna at turpis condimentum lobortis.
+          </p>
     </div>
-    <div class="conteudo">
-        <h1>Reciclagem de Resíduos</h1>
-        <p>
-            Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, <br> ac aliquet odio mattis. Class aptent taciti sociosqu ad litora
-            torquent per conubia nostra, per inceptos himenaeos. <br>Curabitur tempus urna at turpis condimentum lobortis.
-        </p>
-        <p>
-            Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum,<br> ac aliquet odio mattis. Class aptent taciti sociosqu ad litora
-            torquent per conubia nostra, per inceptos himenaeos. <br>Curabitur tempus urna at turpis condimentum lobortis.
-        </p> 
-        <p>
-            Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum,<br> ac aliquet odio mattis. Class aptent taciti sociosqu ad litora
-            torquent per conubia nostra, per inceptos himenaeos.<br> Curabitur tempus urna at turpis condimentum lobortis.
-        </p>
+    <div class="imagem">
+        <img src="~/imageminicio.png" alt="Descrição da imagem" width="70%" height="70%">
     </div>
+    
 
     <a class="button" href="">Ler Mais</a>
-
-
-
-
 </body>
