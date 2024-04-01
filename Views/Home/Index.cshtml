@@ -1,6 +1,26 @@
-﻿@* <style> 
-    
+﻿@* <div class="containers">
+    <div class="texto">
+        <h1>Reciclagem de Resíduos</h1>
+        <p>
+            Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, <br> ac aliquet odio mattis. Class aptent taciti sociosqu ad litora
+            torquent per conubia nostra, per inceptos himenaeos. <br>Curabitur tempus urna at turpis condimentum lobortis.
+        </p>
+        <p>
+            Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum,<br> ac aliquet odio mattis. Class aptent taciti sociosqu ad litora
+            torquent per conubia nostra, per inceptos himenaeos. <br>Curabitur tempus urna at turpis condimentum lobortis.
+        </p>
+        <p>
+            Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum,<br> ac aliquet odio mattis. Class aptent taciti sociosqu ad litora
+            torquent per conubia nostra, per inceptos himenaeos.<br> Curabitur tempus urna at turpis condimentum lobortis.
+        </p>
+        <a class="button" href="https://localhost:7091/Home/SobreNos">Ler Mais</a>
+    </div>
+    <img src="~/imageminicio.png" alt="Descrição da imagem">
+</div>
+
+<style>
     .button {
+        position: relative;
         border-radius: 10px; /* Reduzindo o raio para tornar os cantos mais arredondados */
         background-color: #21689E; /* Cor de fundo */
         border: none; /* Remova a borda */
@@ -13,42 +33,107 @@
         margin: 4px 2px; /* Margem externa */
         cursor: pointer; /* Cursor do mouse */
         bottom: 200px; /* Distância em relação ao fundo da janela */
-        left: 100px; /* Distância em relação à borda esquerda da janela */
+        top: 10px;
     }
-    .imagem {
+
+    .containers {
+        display: flex;
+        justify-content: flex-end; /* Alinha os itens para a extremidade direita do contêiner */
         right: 10px;
-        position: relative;
     }
+
     .texto {
         position: relative;
-        right: 10px;
-    } 
-    img {
-        position: relative;
+        flex: 1;
+        max-width: 50%; /* Limita a largura do texto */
+        padding-right: 200px; /* Adiciona espaço entre o texto e a imagem */
+        top: 170px;
+        left: 50px;
     }
+
+        .texto h1 {
+            color: #21689E;
+        }
+
+    img {
+        max-width: 60%; /* Limita a largura da imagem */
+        max-height: 60%; /* Limita a altura da imagem */
+    }
+
+    .logocima {
+        height: 60%;
+        width: 60%;
+    }
+
+</style> *@
+
+<style>
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url('/telafundo.png');
+        background-size: cover; /* Garante que a imagem cubra todo o espaço disponível */
+        background-position: center; /* Centraliza a imagem no corpo */
+        background-attachment: fixed; /* Fixa a imagem no lugar enquanto a página é rolada */
+    }
+
+
+    img {
+        width: 60%; /* Aumentando a largura da imagem */
+        margin-left: 20px; /* Adicionando um espaçamento à esquerda da imagem */
+    }
+
+    .container {
+        display: flex;
+        align-items: flex-start; /* Alinhando os itens no topo da div */
+    }
+
+        .container > div {
+            flex: 1; /* Faz o conteúdo da div ocupar todo o espaço disponível */
+            margin-top: 150px; /* Adicionando um espaçamento superior */
+            font-family: "Andika New Basic";
+        }
+
+    h1 {
+        font-size: 40px; /* Diminuindo o tamanho do título */
+        margin-bottom: 10px; /* Adicionando um espaçamento inferior */
+        color: #0F334D;
+    }
+
+    p {
+        font-size: 0.9em; /* Diminuindo o tamanho do texto */
+        margin-bottom: 40px; /* Adicionando um espaçamento inferior */
+        position: relative; /* Posição relativa para facilitar a posição do botão */
+    }
+
+    .ler-mais-btn {
+        bottom: 5px; /* Ajustando a distância do botão do final do parágrafo */
+        left: 0;
+        padding: 5px 10px;
+        border: none;
+        color: white; /* Cor do texto do botão */
+        border-radius: 20px;
+        background: #21689E;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+
+
 </style>
 
-
-
-
 <body>
-    <div class="imagem">
-         <img src="~/imageminicio.png" alt="Descrição da imagem" width="70%" height="70%">
-
-         <h1>Reciclagem de Resíduos</h1>
-          <p>
-             Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, <br> ac aliquet odio mattis. Class aptent taciti sociosqu ad litora
-             torquent per conubia nostra, per inceptos himenaeos. <br>Curabitur tempus urna at turpis condimentum lobortis.
-          </p>
-          <p>
-             Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum,<br> ac aliquet odio mattis. Class aptent taciti sociosqu ad litora
-             torquent per conubia nostra, per inceptos himenaeos. <br>Curabitur tempus urna at turpis condimentum lobortis.
-          </p>
-          <p>
-              Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum,<br> ac aliquet odio mattis. Class aptent taciti sociosqu ad litora
-              torquent per conubia nostra, per inceptos himenaeos.<br> Curabitur tempus urna at turpis condimentum lobortis.
-          </p>
+    <div class="container">
+        <div>
+            <h1>Reciclagem de Resíduos</h1>
+            <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+            <button class="ler-mais-btn">Ler Mais</button>
+        </div>
+        <img src="~/imageminicio.png" alt="Descrição da imagem">
     </div>
-
-    <a class="button" href="">Ler Mais</a>
-</body> *@
+</body>
