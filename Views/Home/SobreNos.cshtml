@@ -5,10 +5,12 @@
     <title>Sobre Nós</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-image: url('/telafundo.png');
+            background-size: cover; /* Garante que a imagem cubra todo o espaço disponível */
+            background-position: center; /* Centraliza a imagem no corpo */
+            background-attachment: fixed; /* Fixa a imagem no lugar enquanto a página é rolada */
         }
 
         .container {
@@ -60,10 +62,8 @@
     </style>
 </head>
 <body>
+
     <form id="form1" runat="server">
-        <div class="fixed-bottom">
-            <img src="~/telafundo.png" alt="Background Image" />
-        </div>
         <div class="container">
             <header>
                 <h1>Sobre Nós</h1>
