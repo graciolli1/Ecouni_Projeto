@@ -91,19 +91,6 @@ namespace Ecouni_Projeto.Migrations
                     b.ToTable("DownloadApps");
                 });
 
-            modelBuilder.Entity("Ecouni_Projeto.Models.SobreNos", b =>
-                {
-                    b.Property<int>("SobreNosId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SobreNosId"));
-
-                    b.HasKey("SobreNosId");
-
-                    b.ToTable("SobreNos");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")

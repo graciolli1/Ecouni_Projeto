@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ecouni_Projeto.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240325213715_DbModelos1")]
-    partial class DbModelos1
+    [Migration("20240401231804_DbInicialCompleto2")]
+    partial class DbInicialCompleto2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -92,19 +92,6 @@ namespace Ecouni_Projeto.Migrations
                     b.HasKey("DownloadAppId");
 
                     b.ToTable("DownloadApps");
-                });
-
-            modelBuilder.Entity("Ecouni_Projeto.Models.SobreNos", b =>
-                {
-                    b.Property<int>("SobreNosId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SobreNosId"));
-
-                    b.HasKey("SobreNosId");
-
-                    b.ToTable("SobreNos");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
