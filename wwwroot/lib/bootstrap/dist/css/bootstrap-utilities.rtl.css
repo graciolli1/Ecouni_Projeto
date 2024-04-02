@@ -531,10 +531,6 @@
   width: 75% !important;
 }
 
-.w-100 {
-  width: 100% !important;
-}
-
 .w-auto {
   width: auto !important;
 }
@@ -1418,11 +1414,6 @@
 .bg-black {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-black-rgb), var(--bs-bg-opacity)) !important;
-}
-
-.bg-white {
-  --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important;
 }
 
 .bg-body {

@@ -1,73 +1,4 @@
-﻿@* <div class="containers">
-    <div class="texto">
-        <h1>Reciclagem de Resíduos</h1>
-        <p>
-            Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, <br> ac aliquet odio mattis. Class aptent taciti sociosqu ad litora
-            torquent per conubia nostra, per inceptos himenaeos. <br>Curabitur tempus urna at turpis condimentum lobortis.
-        </p>
-        <p>
-            Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum,<br> ac aliquet odio mattis. Class aptent taciti sociosqu ad litora
-            torquent per conubia nostra, per inceptos himenaeos. <br>Curabitur tempus urna at turpis condimentum lobortis.
-        </p>
-        <p>
-            Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum,<br> ac aliquet odio mattis. Class aptent taciti sociosqu ad litora
-            torquent per conubia nostra, per inceptos himenaeos.<br> Curabitur tempus urna at turpis condimentum lobortis.
-        </p>
-        <a class="button" href="https://localhost:7091/Home/SobreNos">Ler Mais</a>
-    </div>
-    <img src="~/imageminicio.png" alt="Descrição da imagem">
-</div>
-
-<style>
-    .button {
-        position: relative;
-        border-radius: 10px; /* Reduzindo o raio para tornar os cantos mais arredondados */
-        background-color: #21689E; /* Cor de fundo */
-        border: none; /* Remova a borda */
-        color: white; /* Cor do texto */
-        padding: 10px 20px; /* Diminuindo o espaçamento interno */
-        text-align: center; /* Alinhar texto ao centro */
-        text-decoration: none; /* Remover decoração de texto */
-        display: inline-block; /* Exibir como bloco */
-        font-size: 14px; /* Reduzindo o tamanho da fonte */
-        margin: 4px 2px; /* Margem externa */
-        cursor: pointer; /* Cursor do mouse */
-        bottom: 200px; /* Distância em relação ao fundo da janela */
-        top: 10px;
-    }
-
-    .containers {
-        display: flex;
-        justify-content: flex-end; /* Alinha os itens para a extremidade direita do contêiner */
-        right: 10px;
-    }
-
-    .texto {
-        position: relative;
-        flex: 1;
-        max-width: 50%; /* Limita a largura do texto */
-        padding-right: 200px; /* Adiciona espaço entre o texto e a imagem */
-        top: 170px;
-        left: 50px;
-    }
-
-        .texto h1 {
-            color: #21689E;
-        }
-
-    img {
-        max-width: 60%; /* Limita a largura da imagem */
-        max-height: 60%; /* Limita a altura da imagem */
-    }
-
-    .logocima {
-        height: 60%;
-        width: 60%;
-    }
-
-</style> *@
-
-<style>
+﻿ <style>
 
     body {
         margin: 0;
@@ -110,7 +41,7 @@
     .ler-mais-btn {
         bottom: 5px; /* Ajustando a distância do botão do final do parágrafo */
         left: 0;
-        padding: 5px 10px;
+        padding: 10px 15px;
         border: none;
         color: white; /* Cor do texto do botão */
         border-radius: 20px;
@@ -134,7 +65,90 @@
                 with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
             </p>
             <a href="https://localhost:7091/Home/SobreNos" class="ler-mais-btn">Ler Mais</a>
-        </div>
+    </div>
         <img src="~/imageminicio.png" alt="Descrição da imagem">
     </div>
-</body>
+</body> 
+
+           
+@* <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('/telafundo.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 15px;
+            max-width: 2000px;
+            margin: 0px;
+        }
+
+            .container > div {
+                flex: 1;
+                margin-bottom: 20px;
+            }
+
+        img {
+            width: 50%;
+            margin-left: 40px;
+            margin-right: 0px; /* Adicionei um espaçamento à direita da imagem */
+        }
+
+        h1 {
+            font-size: 2.8vw; /* Usando unidade relativa vw para o título */
+            margin-bottom: 10px;
+            color: #0F334D;
+            margin-top: 140px;
+        }
+
+        p {
+            font-size: 1vw; /* Usando unidade relativa vw para o texto */
+            margin-bottom: 40px;
+        }
+
+        .ler-mais-btn {
+            display: block;
+            padding: 1vw 2vw; /* Usando unidade relativa vw para o padding */
+            border: none;
+            color: white;
+            border-radius: 20px;
+            background: #21689E;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            text-decoration: none;
+            width: fit-content; /* Define a largura do botão conforme o conteúdo */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div>
+            <h1>Reciclagem de Resíduos</h1>
+            <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+            <a href="https://localhost:7091/Home/SobreNos" class="ler-mais-btn">Ler Mais</a>
+        </div>
+            <img src="~/imageminicio.png" alt="Descrição da imagem"> *@
+
+
+
+
+

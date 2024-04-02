@@ -94,6 +94,7 @@
         .checkbox label {
             color: #6c757d;
             font-size: 0.9rem;
+            margin-left: 20px;
         }
 
     .btn-primary {
@@ -146,11 +147,24 @@
         border-radius: 40px;
         background: #FFF;
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-        width: 400px
+        width: 400px;
+        height: 580px;
+        
     }
 
     .retangulo > img{
         width: 50%;
+    }
+
+    #forgot-password {
+        color: #0F334D;
+        font-family: "Andika New Basic";
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-left: 200px;
+        text-decoration: none;
     }
 
 </style>
@@ -171,7 +185,7 @@
                 <div class="form-floating mb-3">
                     <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
                     <label asp-for="Input.Password" class="form-label">Digite sua senha</label>
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>   ''
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div class="checkbox mb-3">
                     <label asp-for="Input.RememberMe" class="form-label">
@@ -186,12 +200,9 @@
                     <p>
                         <a id="forgot-password" asp-page="./ForgotPassword">Esqueceu sua senha?</a>
                     </p>
-                    <p>
+                    @* <p>
                         <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registrar um novo usúario</a>
-                    </p>
-                    <p>
-                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
-                    </p>
+                    </p> *@
                 </div>
             </form>
         </section>
