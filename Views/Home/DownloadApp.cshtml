@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('/telafundo.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 15px;
+            max-width: 2000px;
+            margin: 0px;
+        }
+
+            .container > div {
+                flex: 1;
+                margin-bottom: 20px;
+            }
+
+        .celular img{
+            width: 50%;
+            margin-left: 200px;
+            margin-right: 0px; /* Adicionei um espaçamento à direita da imagem */
+        }
+
+        h1 {
+            font-size: 2.8vw; /* Usando unidade relativa vw para o título */
+            margin-bottom: 10px;
+            color: #0F334D;
+            margin-top: 140px;
+        }
+
+        p {
+            font-size: 1vw; /* Usando unidade relativa vw para o texto */
+            margin-bottom: 40px;
+        }
+
+        .ler-mais-btn {
+            display: block;
+            padding: 1vw 2vw; /* Usando unidade relativa vw para o padding */
+            border: none;
+            color: white;
+            border-radius: 20px;
+            background: #21689E;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            text-decoration: none;
+            width: fit-content; /* Define a largura do botão conforme o conteúdo */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div>
+            <h1>Reciclagem de Resíduos</h1>
+            <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+        </div>
+        <div class="celular">
+            <img src="~/celularcomlogo.png" alt="Descrição da imagem">
+        </div>
