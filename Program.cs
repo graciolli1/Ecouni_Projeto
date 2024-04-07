@@ -1,6 +1,10 @@
 using Ecouni_Projeto.Data;
+using Ecouni_Projeto.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Ecouni_Projeto.Services; // Importe o namespace onde está a classe JwtService
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +17,9 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
+// Registro do serviço JwtService
+builder.Services.AddSingleton<IJwtService>(new JwtService("SuaChaveSecreta"));
 
 var app = builder.Build();
 
