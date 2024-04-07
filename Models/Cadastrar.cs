@@ -15,28 +15,8 @@ namespace Ecouni_Projeto.Models
         [Required]
         public string Email { get; set; }
 
-        private int _telefone; // Armazena o telefone como um inteiro
-
         [Required]
-        public string Telefone
-        {
-            get { return _telefone.ToString(); } // Retorna o telefone como uma string
-            set
-            {
-                // Remove todos os caracteres não numéricos
-                string digitsOnly = Regex.Replace(value, @"[^\d]", "");
-
-                // Se o número de dígitos for igual a 11, converte para int e atribui ao campo _telefone
-                if (digitsOnly.Length == 11 && int.TryParse(digitsOnly, out int result))
-                {
-                    _telefone = result;
-                }
-                else
-                {
-                    throw new ArgumentException("Telefone inválido.");
-                }
-            }
-        }
+        public string Telefone { get; set; }
 
         [Required]
         public string Senha { get; set; }

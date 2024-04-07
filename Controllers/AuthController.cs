@@ -58,7 +58,7 @@ namespace Ecouni_Projeto.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var newUser = await _userService.RegisterAsync(model.Nome, model.Email, model.Telefone.ToString(), model.Senha);
+                var newUser = await _userService.RegisterAsync(model.Nome, model.Email, model.Telefone, model.Senha);
 
                 return Created("api/auth/login", newUser);
             }
