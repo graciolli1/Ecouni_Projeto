@@ -1,8 +1,6 @@
 ﻿using Ecouni_Projeto.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Ecouni_Projeto.Models;
-using System;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ecouni_Projeto.Controllers
