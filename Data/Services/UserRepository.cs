@@ -18,13 +18,6 @@ namespace Ecouni_Projeto.Services.Repositories
             _context = context;
         }
 
-        public async Task<Cadastrar> GetUserByUsernameAsync(string username)
-        {
-            var user = await _context.Cadastrar.FirstOrDefaultAsync(u => u.Nome == username);
-
-            return user ?? throw new Exception("Usuário não encontrado");
-        }
-
         public async Task<Cadastrar> GetUserByEmailAsync(string email)
         {
             var user = await _context.Cadastrar.FirstOrDefaultAsync(u => u.Email == email);

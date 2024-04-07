@@ -28,7 +28,15 @@ namespace Ecouni_Projeto.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var user = await _userService.AuthenticateAsync(model.Nome, model.Senha);
+                // Verifica se o modelo possui um e-mail fornecido
+                if (string.IsNullOrEmpty(model.Email))
+                {
+                    return BadRequest("O e-mail é obrigatório para fazer login.");
+                }
+
+                // Chama o método AuthenticateByEmailAsync para verificar o e-mail e senha
+                var user = await _userService.AuthenticateAsync(model.Email, model.Senha);
+
                 if (user == null)
                 {
                     return Unauthorized("Credenciais inválidas");

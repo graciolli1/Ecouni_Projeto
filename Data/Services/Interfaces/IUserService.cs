@@ -6,7 +6,7 @@ namespace Ecouni_Projeto.Services.Interfaces
 {
     public interface IUserService
     {
-        Task<Cadastrar> AuthenticateAsync(string username, string password);
+        Task<Cadastrar> AuthenticateAsync(string email, string password);
         Task<Cadastrar> RegisterAsync(string fullName, string email, string phone, string password);
     }
 }

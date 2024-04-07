@@ -9,19 +9,19 @@ namespace Ecouni_Projeto.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly IJwtService _jwtService;
-
+        
         public UserService(IUserRepository userRepository, IJwtService jwtService)
         {
             _userRepository = userRepository;
             _jwtService = jwtService;
         }
 
-        public async Task<Cadastrar> AuthenticateAsync(string username, string password)
+        public async Task<Cadastrar> AuthenticateAsync(string email, string password)
         {
             try
             {
                 // Busca o usuário pelo nome de usuário (ou outro campo de identificação, como email)
-                var user = await _userRepository.GetUserByUsernameAsync(username);
+                var user = await _userRepository.GetUserByEmailAsync(email);
 
                 // Verifica se o usuário foi encontrado e se a senha corresponde
                 if (user != null && VerifyPassword(password, user.Senha))
