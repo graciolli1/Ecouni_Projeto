@@ -21,6 +21,9 @@ builder.Services.AddControllersWithViews();
 // Registro do serviço JwtService
 builder.Services.AddSingleton<IJwtService>(new JwtService("SuaChaveSecreta"));
 
+// Registro do serviço UserService
+builder.Services.AddScoped<IUserService, UserService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -48,4 +51,3 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.Run();
-

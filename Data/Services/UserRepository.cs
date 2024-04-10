@@ -31,7 +31,7 @@ namespace Ecouni_Projeto.Services.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public Task<Cadastrar> GetUserByPhoneAsync(string phone)
+        public Task<Cadastrar> GetUserByPhoneAsync(string telefone)
         {
             throw new NotImplementedException();
         }

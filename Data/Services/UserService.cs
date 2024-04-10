@@ -9,28 +9,28 @@ namespace Ecouni_Projeto.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly IJwtService _jwtService;
-        
+
         public UserService(IUserRepository userRepository, IJwtService jwtService)
         {
             _userRepository = userRepository;
             _jwtService = jwtService;
         }
 
-        public async Task<Cadastrar> AuthenticateAsync(string email, string password)
+        public async Task<Cadastrar> AuthenticateAsync(string email, string senha)
         {
             try
             {
-                // Busca o usuário pelo nome de usuário (ou outro campo de identificação, como email)
+                // Busca o usuário pelo email
                 var user = await _userRepository.GetUserByEmailAsync(email);
 
                 // Verifica se o usuário foi encontrado e se a senha corresponde
-                if (user != null && VerifyPassword(password, user.Senha))
+                if (user != null && user.Senha == senha)
                 {
                     // Autenticação bem-sucedida, retorna o usuário
                     return user;
                 }
 
-                // Se não houver correspondência de usuário ou senha, retorna default (null)
+                // Se não houver correspondência de usuário ou senha, retorna null
                 return null;
             }
             catch (Exception ex)
@@ -39,7 +39,7 @@ namespace Ecouni_Projeto.Services
             }
         }
 
-        public async Task<Cadastrar> RegisterAsync(string fullName, string email, string phone, string password)
+        public async Task<Cadastrar> RegisterAsync(string nome, string email, string telefone, string senha, string confirmarSenha)
         {
             try
             {
@@ -50,20 +50,13 @@ namespace Ecouni_Projeto.Services
                     throw new ArgumentException("O email fornecido já está em uso.");
                 }
 
-                // Verifica se o telefone já está cadastrado
-                existingUser = await _userRepository.GetUserByPhoneAsync(phone);
-                if (existingUser != null)
-                {
-                    throw new ArgumentException("O telefone fornecido já está em uso.");
-                }
-
                 // Cria um novo usuário com os dados fornecidos
                 var newUser = new Cadastrar
                 {
-                    Nome = fullName,
+                    Nome = nome,
                     Email = email,
-                    Telefone = phone,
-                    Senha = HashPassword(password) // Hash da senha antes de salvar o usuário
+                    Telefone = telefone,
+                    Senha = senha // Por simplicidade, apenas atribuímos a senha diretamente. Você pode modificar esta lógica para armazenar a senha de forma segura.
                 };
 
                 // Salva o novo usuário no repositório
@@ -78,25 +71,6 @@ namespace Ecouni_Projeto.Services
             catch (Exception ex)
             {
                 throw new Exception("Erro ao registrar usuário. Detalhes: " + ex.Message);
-            }
-        }
-
-        // Método para verificar a senha (exemplo simples)
-        private bool VerifyPassword(string password, string hashedPassword)
-        {
-            // Comparação do hash da senha fornecida com o hash armazenado no banco de dados
-            return HashPassword(password) == hashedPassword;
-        }
-
-        // Método para hash da senha (exemplo simples, substitua pela lógica adequada)
-        private string HashPassword(string password)
-        {
-            // Aqui você pode implementar a lógica real de hashing da senha, como usando BCrypt, PBKDF2, etc.
-            // Por simplicidade, este é apenas um exemplo básico de hash usando SHA256
-            using (var sha256 = System.Security.Cryptography.SHA256.Create())
-            {
-                var hashedBytes = sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-                return Convert.ToBase64String(hashedBytes);
             }
         }
     }
