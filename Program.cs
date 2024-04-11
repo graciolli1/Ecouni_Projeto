@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Ecouni_Projeto.Services; // Importe o namespace onde está a classe JwtService
+using Ecouni_Projeto.Services;
+using Ecouni_Projeto.Services.Repositories; // Importe o namespace onde está a classe JwtService
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,9 @@ builder.Services.AddSingleton<IJwtService>(new JwtService("SuaChaveSecreta"));
 
 // Registro do serviço UserService
 builder.Services.AddScoped<IUserService, UserService>();
+
+// Registro do serviço UserRepository
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 
