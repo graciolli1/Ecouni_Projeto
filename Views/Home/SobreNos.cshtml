@@ -13,78 +13,69 @@
             background-attachment: fixed; /* Fixa a imagem no lugar enquanto a página é rolada */
         }
 
+
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative; /* Adiciona posição relativa */
+            width: 100%; /* Define a largura do container */
+            margin-bottom: 20px; /* Espaçamento abaixo do container para a linha */
         }
 
-        header h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 30px;
-        }
-
-        section {
-            margin-bottom: 30px;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            color: #666;
-            margin-bottom: 10px;
-        }
-
-        p {
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .fixed-bottom {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            z-index: -1;
-        }
-
-        .fixed-bottom img {
+            .container img {
                 width: 100%;
-                display: block;
-        } 
-        img {
-            width: 100px;
-            margin-left: 30px;
+            }
+
+        .vertical-line {
+            position: absolute;
+            top: 100%; /* Posiciona a linha abaixo do container */
+            left: 50%; /* Posiciona a linha no centro horizontal */
+            transform: translateX(-50%); /* Corrige o posicionamento para que a linha fique centralizada */
+            width: 1px; /* Largura da linha */
+            height: 290px; /* Altura da linha, usando 100% da altura da viewport */
+            background-color: #000; /* Cor da linha */
         }
 
+        h1 {
+            color: #0F334D;
+            font-family: Tomorrow;
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        /* .vertical-line svg {
+            position: absolute; /* Posiciona o SVG absolutamente dentro da .vertical-line */
+            top: -20.5px; /* Posiciona o centro do ellipse no topo da .vertical-line */
+            left: 50%; /* Posiciona o centro do ellipse no centro horizontal da .vertical-line */
+            transform: translateX(-50%);
+            z-index: 2; /* Coloca o ellipse acima da linha */
+        }
+        */
+
+        
 
     </style>
-</head>
-<body>
 
-    <form id="form1" runat="server">
+    <body>
+
         <div class="container">
-            <header>
-                <h1>Sobre Nós</h1>
-            </header>
-            <section>
-                <h2>Quem Somos</h2>
-                <p>Somos uma equipe dedicada a criar soluções inovadoras para nossos clientes.</p>
-            </section>
-            <section>
-                <h2>Nossa Missão</h2>
-                <p>Nossa missão é fornecer produtos e serviços de alta qualidade que atendam às necessidades de nossos clientes.</p>
-            </section>
-            <section>
-                <h2>Nossa Equipe</h2>
-                <p>Temos uma equipe talentosa composta por desenvolvedores, designers e especialistas em marketing.</p>
-            </section>
+             <img src="~/Fotofaatsobrenos.png" />
         </div>
-    </form>
-</body>
-</html>
+        <h1>Sobre nós</h1>
+        <div class="vertical-line">
+            @* <svg xmlns="http://www.w3.org/2000/svg" width="43" height="41" viewBox="0 0 43 41" fill="none">
+                <ellipse cx="21.5" cy="20.5" rx="21.5" ry="20.5" fill="#21689E" />
+            </svg> *@
+        </div>
+
+        
+
+
+
+    </body>
+
+
+
+</head>
