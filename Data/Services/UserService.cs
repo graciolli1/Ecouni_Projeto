@@ -56,7 +56,8 @@ namespace Ecouni_Projeto.Services
                     Nome = nome,
                     Email = email,
                     Telefone = telefone,
-                    Senha = senha // Por simplicidade, apenas atribuímos a senha diretamente. Você pode modificar esta lógica para armazenar a senha de forma segura.
+                    Senha = senha, // Por simplicidade, apenas atribuímos a senha diretamente. Você pode modificar esta lógica para armazenar a senha de forma segura.
+                    ConfirmarSenha = confirmarSenha                
                 };
 
                 // Salva o novo usuário no repositório

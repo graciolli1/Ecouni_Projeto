@@ -47,8 +47,9 @@ namespace Ecouni_Projeto.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Telefone")
-                        .HasColumnType("int");
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Cadastrarid");
 
@@ -63,12 +64,12 @@ namespace Ecouni_Projeto.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContatoId"));
 
-                    b.Property<decimal>("Email")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Mensagem")
+                    b.Property<string>("Mensagem")
                         .HasMaxLength(1000)
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<int>("Nome")
                         .HasColumnType("int");

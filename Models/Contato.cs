@@ -7,9 +7,9 @@ namespace Ecouni_Projeto.Models
         public int ContatoId { get; set; }
 
         public int Nome { get; set; }
-        public decimal Email { get; set; }
+        public string Email { get; set; }
 
         [StringLength(1000)]
-        public decimal Mensagem { get; set; }
+        public string Mensagem { get; set; }
     }
 }
