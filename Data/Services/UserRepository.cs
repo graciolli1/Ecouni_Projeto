@@ -1,6 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Ecouni_Projeto.Data;
 using Ecouni_Projeto.Models;
@@ -31,9 +29,11 @@ namespace Ecouni_Projeto.Services.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public Task<Cadastrar> GetUserByPhoneAsync(string telefone)
+        public async Task<Cadastrar> GetUserByPhoneAsync(string telefone)
         {
-            throw new NotImplementedException();
+            var user = await _context.Cadastrar.FirstOrDefaultAsync(u => u.Telefone == telefone);
+
+            return user;
         }
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Ecouni_Projeto.Migrations
 {
     /// <inheritdoc />
-    public partial class DbInicial : Migration
+    public partial class GeralDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
