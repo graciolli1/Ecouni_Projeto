@@ -3,6 +3,7 @@ using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 using Ecouni_Projeto.Models;
 using Ecouni_Projeto.Services.Interfaces;
 
@@ -17,7 +18,7 @@ namespace Ecouni_Projeto.Services
             _secretKey = secretKey;
         }
 
-        public string GenerateToken(Cadastrar user)
+        public Task<string> GenerateToken(Cadastrar user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_secretKey);
@@ -27,18 +28,13 @@ namespace Ecouni_Projeto.Services
                 {
                     new Claim(ClaimTypes.Name, user.Nome),
                     new Claim(ClaimTypes.Email, user.Email),
-                    // Outros claims, se necessário
+                    // Adicione outros claims conforme necessário
                 }),
                 Expires = DateTime.UtcNow.AddHours(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
-        }
-
-        Task<string> IJwtService.GenerateToken(Cadastrar user)
-        {
-            throw new NotImplementedException();
+            return Task.FromResult(tokenHandler.WriteToken(token));
         }
     }
 }

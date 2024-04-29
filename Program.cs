@@ -1,3 +1,6 @@
+using System;
+using System.Security.Cryptography;
+using System.Text;
 using Ecouni_Projeto.Data;
 using Ecouni_Projeto.Services.Interfaces;
 using Ecouni_Projeto.Services.Repositories;
@@ -6,7 +9,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,8 +21,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     {
         sqlOptions.EnableRetryOnFailure(
             maxRetryCount: int.MaxValue,
-            maxRetryDelay: TimeSpan.FromSeconds(30), // tempo máximo de espera entre tentativas
-            errorNumbersToAdd: null); // adiciona códigos de erro específicos que devem ser considerados para retry
+            maxRetryDelay: TimeSpan.FromSeconds(30),
+            errorNumbersToAdd: null);
     });
 });
 
@@ -29,16 +31,12 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
-builder.Services.AddControllersWithViews();
+// Aqui está onde você pode usar a função GenerateSecretKey() para obter a chave secreta
+var secretKey = GenerateSecretKey();
 
-// Registro do serviço JwtService
-builder.Services.AddSingleton<IJwtService>(new JwtService("SuaChaveSecreta"));
-
-// Registro do serviço UserService
-builder.Services.AddScoped<IUserService, UserService>();
-
-// Registro do serviço UserRepository
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddSingleton<IJwtService>(new JwtService(secretKey)); // Registro do serviço JwtService
+builder.Services.AddScoped<IUserService, UserService>(); // Registro do serviço UserService
+builder.Services.AddScoped<IUserRepository, UserRepository>(); // Registro do serviço UserRepository
 
 var app = builder.Build();
 
@@ -50,7 +48,6 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -67,3 +64,15 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.Run();
+
+// Função para gerar uma chave secreta com tamanho adequado
+string GenerateSecretKey()
+{
+    using (var rng = RandomNumberGenerator.Create())
+    {
+        int keySize = 256 / 8; // Tamanho da chave em bytes (256 bits)
+        var keyBytes = new byte[keySize];
+        rng.GetBytes(keyBytes);
+        return Convert.ToBase64String(keyBytes);
+    }
+}
