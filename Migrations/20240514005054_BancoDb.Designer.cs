@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ecouni_Projeto.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240423235953_GeralDb")]
-    partial class GeralDb
+    [Migration("20240514005054_BancoDb")]
+    partial class BancoDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,29 +57,6 @@ namespace Ecouni_Projeto.Migrations
                     b.HasKey("Cadastrarid");
 
                     b.ToTable("Cadastrar");
-                });
-
-            modelBuilder.Entity("Ecouni_Projeto.Models.Contato", b =>
-                {
-                    b.Property<int>("ContatoId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContatoId"));
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Mensagem")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<int>("Nome")
-                        .HasColumnType("int");
-
-                    b.HasKey("ContatoId");
-
-                    b.ToTable("Contatos");
                 });
 
             modelBuilder.Entity("Ecouni_Projeto.Models.DownloadApp", b =>
