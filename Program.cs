@@ -31,6 +31,18 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
+// Configuração do CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:8081") // Substitua pelo endereço do seu aplicativo React
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
 // Aqui está onde você pode usar a função GenerateSecretKey() para obter a chave secreta
 var secretKey = GenerateSecretKey();
 
@@ -55,6 +67,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+// Uso do middleware CORS
+app.UseCors("AllowReactApp");
 
 app.UseAuthorization();
 

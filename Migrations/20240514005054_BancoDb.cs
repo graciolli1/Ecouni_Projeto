@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Ecouni_Projeto.Migrations
 {
     /// <inheritdoc />
-    public partial class GeralDb : Migration
+    public partial class BancoDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -65,21 +65,6 @@ namespace Ecouni_Projeto.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cadastrar", x => x.Cadastrarid);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Contatos",
-                columns: table => new
-                {
-                    ContatoId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<int>(type: "int", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Mensagem = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Contatos", x => x.ContatoId);
                 });
 
             migrationBuilder.CreateTable(
@@ -260,9 +245,6 @@ namespace Ecouni_Projeto.Migrations
 
             migrationBuilder.DropTable(
                 name: "Cadastrar");
-
-            migrationBuilder.DropTable(
-                name: "Contatos");
 
             migrationBuilder.DropTable(
                 name: "DownloadApps");

@@ -19,7 +19,7 @@ namespace Ecouni_Projeto.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult> Login(Cadastrar model)
+        public async Task<ActionResult> Login(LoginModel model)
         {
             try
             {
