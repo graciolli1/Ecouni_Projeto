@@ -29,16 +29,9 @@ namespace Ecouni_Projeto.Services.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Cadastrar> GetUserByPhoneAsync(string telefone)
+        public async Task<Cadastrar> GetUserByIdAsync(int Cadastrarid)
         {
-            var user = await _context.Cadastrar.FirstOrDefaultAsync(u => u.Telefone == telefone);
-
-            return user;
-        }
-
-        public async Task<Cadastrar> GetUserByIdAsync(int id)
-        {
-            return await _context.Cadastrar.FindAsync(id);
+            return await _context.Cadastrar.FindAsync(Cadastrarid);
         }
 
         public async Task UpdateUserAsync(Cadastrar user)

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Ecouni_Projeto.Services.Interfaces;
 using Ecouni_Projeto.Models;
+using Ecouni_Projeto.Services.Interfaces;
 
 namespace Ecouni_Projeto.Services
 {
@@ -39,9 +39,18 @@ namespace Ecouni_Projeto.Services
             }
         }
 
-        public Task<Cadastrar> GetUserByIdAsync(int id)
+        public async Task<Cadastrar> GetUserByEmailAsync(string email)
         {
-            throw new NotImplementedException();
+            try
+            {
+                // Busca o usuário pelo email
+                var user = await _userRepository.GetUserByEmailAsync(email);
+                return user;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao buscar usuário pelo email. Detalhes: " + ex.Message);
+            }
         }
 
         public async Task<Cadastrar> RegisterAsync(string nome, string email, string telefone, string senha, string confirmarSenha)
@@ -109,9 +118,31 @@ namespace Ecouni_Projeto.Services
             }
         }
 
-        public Task<bool> UserExistsAsync(int id)
+        public async Task<Cadastrar> GetUserByIdAsync(int Cadastrarid)
         {
-            throw new NotImplementedException();
+            try
+            {
+                // Busca o usuário pelo id
+                var user = await _userRepository.GetUserByIdAsync(Cadastrarid);
+                return user;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao buscar usuário pelo id. Detalhes: " + ex.Message);
+            }
+        }
+        public async Task<bool> UserExistsAsync(int Cadastrarid)
+        {
+            try
+            {
+                // Verifica se o usuário existe pelo id
+                var user = await _userRepository.GetUserByIdAsync(Cadastrarid);
+                return user != null; // Retorna true se o usuário existir, false caso contrário
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao verificar se o usuário existe. Detalhes: " + ex.Message);
+            }
         }
     }
 }

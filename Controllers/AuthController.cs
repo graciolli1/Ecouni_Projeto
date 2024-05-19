@@ -135,5 +135,18 @@ namespace Ecouni_Projeto.Controllers
                 }
             }
         }
+        [HttpGet("/usuarios/{email}")]
+        public IActionResult GetDetalhesUsuario(string email)
+        {
+            // Lógica para buscar o usuário com base no e-mail
+            var usuario = _userService.GetUserByEmailAsync(email);
+            if (usuario == null)
+            {
+                return NotFound(); // Retornar NotFound se o usuário não for encontrado
+            }
+
+            return Ok(usuario); // Retornar os detalhes do usuário em caso de sucesso
+        }
+
     }
 }
