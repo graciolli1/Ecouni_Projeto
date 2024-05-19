@@ -39,6 +39,11 @@ namespace Ecouni_Projeto.Services
             }
         }
 
+        public Task<Cadastrar> GetUserByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<Cadastrar> RegisterAsync(string nome, string email, string telefone, string senha, string confirmarSenha)
         {
             try
@@ -57,7 +62,7 @@ namespace Ecouni_Projeto.Services
                     Email = email,
                     Telefone = telefone,
                     Senha = senha, // Por simplicidade, apenas atribuímos a senha diretamente. Você pode modificar esta lógica para armazenar a senha de forma segura.
-                    ConfirmarSenha = confirmarSenha                
+                    ConfirmarSenha = confirmarSenha
                 };
 
                 // Salva o novo usuário no repositório
@@ -73,6 +78,40 @@ namespace Ecouni_Projeto.Services
             {
                 throw new Exception("Erro ao registrar usuário. Detalhes: " + ex.Message);
             }
+        }
+
+        public async Task UpdateUserAsync(Cadastrar user)
+        {
+            try
+            {
+                // Verifica se o usuário existe
+                var existingUser = await _userRepository.GetUserByIdAsync(user.Cadastrarid);
+                if (existingUser == null)
+                {
+                    throw new ArgumentException("Usuário não encontrado.");
+                }
+
+                // Atualiza as informações do usuário
+                existingUser.Nome = user.Nome;
+                existingUser.Email = user.Email;
+                existingUser.Telefone = user.Telefone;
+
+                // Salva as alterações no repositório
+                await _userRepository.UpdateUserAsync(existingUser);
+            }
+            catch (ArgumentException)
+            {
+                throw; // Propaga a exceção para que ela seja tratada no controlador
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao atualizar informações do usuário. Detalhes: " + ex.Message);
+            }
+        }
+
+        public Task<bool> UserExistsAsync(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

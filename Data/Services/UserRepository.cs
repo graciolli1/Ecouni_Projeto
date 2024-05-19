@@ -35,5 +35,16 @@ namespace Ecouni_Projeto.Services.Repositories
 
             return user;
         }
+
+        public async Task<Cadastrar> GetUserByIdAsync(int id)
+        {
+            return await _context.Cadastrar.FindAsync(id);
+        }
+
+        public async Task UpdateUserAsync(Cadastrar user)
+        {
+            _context.Cadastrar.Update(user);
+            await _context.SaveChangesAsync();
+        }
     }
 }
