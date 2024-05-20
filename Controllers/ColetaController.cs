@@ -2,13 +2,16 @@
 using Ecouni_Projeto.Models;
 using Ecouni_Projeto.Data;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Ecouni_Projeto.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ColetaController : Controller
+    public class ColetaController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
@@ -28,6 +31,16 @@ namespace Ecouni_Projeto.Controllers
 
             // Aqui você pode adicionar lógica para validar os dados, se necessário
 
+            // Obtenha o ID do usuário autenticado (presumindo que você está usando autenticação JWT)
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("Usuário não autenticado.");
+            }
+
+            // Define o ID do usuário na coleta
+            coleta.Cadastrarid = int.Parse(userId);
+
             // Defina a data da coleta como a data atual
             coleta.DataRegistro = DateTime.Now;
 
@@ -39,11 +52,10 @@ namespace Ecouni_Projeto.Controllers
 
         // Endpoint para recuperar os dados de coleta para gerar relatórios
         [HttpGet("ObterColetas")]
-        [Authorize]
-        public ActionResult<IEnumerable<Coleta>> ObterColetas()
+        public ActionResult<IEnumerable<Coleta>> ObterColetas(int userId)
         {
-            var coletas = _context.Coleta.ToList(); // Recupera todas as coletas do banco de dados
-            return Json(coletas); // Retorna os dados da coleta em formato JSON
+            var coletas = _context.Coleta.Where(c => c.Cadastrarid == userId).ToList();
+            return Ok(coletas); // Retorna os dados da coleta em formato JSON
         }
     }
 }

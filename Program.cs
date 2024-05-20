@@ -15,7 +15,8 @@ using Microsoft.Extensions.Hosting;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
@@ -52,6 +53,14 @@ builder.Services.AddSingleton<IJwtService>(new JwtService(secretKey)); // Regist
 builder.Services.AddScoped<IUserService, UserService>(); // Registro do serviço UserService
 builder.Services.AddScoped<IUserRepository, UserRepository>(); // Registro do serviço UserRepository
 
+// Adicione a configuração de controladores e formatação JSON
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = null;
+        options.JsonSerializerOptions.DictionaryKeyPolicy = null;
+    });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -73,12 +82,17 @@ app.UseCors("AllowReactApp");
 
 app.UseRouting();
 
+// Adicione middleware de autenticação e autorização
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
+
+// Mapear controladores de API
+app.MapControllers();
 
 app.Run();
 

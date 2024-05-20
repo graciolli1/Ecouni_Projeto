@@ -10,9 +10,19 @@ namespace Ecouni_Projeto.Data
             : base(options)
         {
         }
-
-        public DbSet<Cadastrar> Cadastrar { get; set; }
-        public DbSet<DownloadApp> DownloadApps { get; set; }
         public DbSet<Coleta> Coleta { get; set; }
+        public DbSet<Cadastrar> Cadastrar { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Coleta>()
+                .HasOne(c => c.Cadastrar)
+                .WithMany()
+                .HasForeignKey(c => c.Cadastrarid)
+                .IsRequired();
+
+            base.OnModelCreating(modelBuilder);
+        }
+        public DbSet<DownloadApp> DownloadApps { get; set; }
     }
 }
