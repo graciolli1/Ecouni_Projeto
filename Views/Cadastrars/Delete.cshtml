@@ -3,48 +3,172 @@
 @{
     ViewData["Title"] = "Delete";
 }
+<div class="container-tudo">
+        <div class="delete-container">
+            <h1>Deletar Usuário</h1>
 
-<h1>Deletar Usuário</h1>
-
-<h3>Você tem certeza que quer deletar este usuário?</h3>
-<div>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Telefone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Telefone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Senha)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Senha)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ConfirmarSenha)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ConfirmarSenha)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Cadastrarid" />
-        <input type="submit" value="Deletar" class="btn btn-danger" /> |
-        <a asp-action="Index">Voltar para lista</a>
-    </form>
+            <h3>Você tem certeza que quer deletar este usuário?</h3>
+            <div>
+                <hr />
+                <dl class="row">
+                    <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </dt>
+                    <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.Nome)
+                    </dd>
+                    <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
+                    <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+                    <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.Telefone)
+                    </dt>
+                    <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.Telefone)
+                    </dd>
+                    <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.Senha)
+                    </dt>
+                    <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.Senha)
+                    </dd>
+                    <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.ConfirmarSenha)
+                    </dt>
+                    <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.ConfirmarSenha)
+                    </dd>
+                </dl>
+                <div class="textos">
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="Cadastrarid" />
+                        <input type="submit" value="Deletar" class="btn btn-danger" /> |
+                        <a asp-action="Index">Voltar para lista</a>
+                    </form>
+                </div>
+            </div>
+        </div>
 </div>
+
+<style>
+
+    /* Estilo geral da página */
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #343a40;
+    }
+
+    /* Estilo do contêiner principal */
+    .delete-container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 50px auto;
+    }
+
+    .textos > form, a{
+        text-align: center;
+    }
+
+    /* Centralização do contêiner principal */
+    .container-tudo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    /* Estilo do título */
+    h1 {
+        color: #2A629A;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 2em;
+    }
+
+    /* Estilo do subtítulo */
+    h3 {
+        color: #2A629A;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 1.5em;
+    }
+
+    /* Linha horizontal */
+    hr {
+        border: 0;
+        height: 1px;
+        background-color: #2A629A;
+        margin-bottom: 30px;
+    }
+
+    /* Estilo dos elementos de lista de definição */
+    dl.row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    dt.col-sm-2 {
+        font-weight: bold;
+        color: #343a40;
+        width: 20%;
+        padding: 10px 0;
+    }
+
+    dd.col-sm-10 {
+        width: 80%;
+        padding: 10px 0;
+        border-bottom: 1px solid #ced4da;
+    }
+
+        /* Remover a linha inferior do último dd */
+        dd.col-sm-10:last-child {
+            border-bottom: none;
+        }
+
+    /* Estilo do botão de deletar */
+    .btn.btn-danger {
+        background-color: #dc3545;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin: 0 10px;
+    }
+
+        .btn.btn-danger:hover {
+            background-color: #c82333;
+        }
+
+    /* Estilo do link de voltar */
+    a {
+        color: #007bff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        margin: 0 10px;
+    }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+    /* Centralização dos elementos de texto */
+    .textos {
+        text-align: center;
+    }
+
+        .textos > a {
+            text-decoration: none;
+        }
+
+
+
+</style>
