@@ -8,7 +8,9 @@ namespace Ecouni_Projeto.Models
     {
         public int Id { get; set; }
         [Required]
-        public string TamanhoSaco { get; set; }
+        public string TipoResiduo { get; set; }
+        [Required]
+        public int TamanhoSaco { get; set; }
         [Required]
         public int Quantidade { get; set; }
         [Required]
