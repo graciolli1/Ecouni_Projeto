@@ -13,26 +13,16 @@
             background-attachment: fixed; /* Fixa a imagem no lugar enquanto a página é rolada */
         }
 
-
         .container {
             position: relative; /* Adiciona posição relativa */
             width: 100%; /* Define a largura do container */
-            margin-bottom: 20px; /* Espaçamento abaixo do container para a linha */
+            margin-bottom: 20px; /* Espaçamento abaixo do container para os textos */
+            text-align: center; /* Centraliza o conteúdo */
         }
 
             .container img {
                 width: 100%;
             }
-
-        .vertical-line {
-            position: absolute;
-            top: 100%; /* Posiciona a linha abaixo do container */
-            left: 50%; /* Posiciona a linha no centro horizontal */
-            transform: translateX(-50%); /* Corrige o posicionamento para que a linha fique centralizada */
-            width: 1px; /* Largura da linha */
-            height: 290px; /* Altura da linha, usando 100% da altura da viewport */
-            background-color: #000; /* Cor da linha */
-        }
 
         h1 {
             color: #0F334D;
@@ -43,39 +33,30 @@
             line-height: normal;
             text-transform: uppercase;
             text-align: center;
+            margin-top: 10px;
         }
 
-        /* .vertical-line svg {
-            position: absolute; /* Posiciona o SVG absolutamente dentro da .vertical-line */
-            top: -20.5px; /* Posiciona o centro do ellipse no topo da .vertical-line */
-            left: 50%; /* Posiciona o centro do ellipse no centro horizontal da .vertical-line */
-            transform: translateX(-50%);
-            z-index: 2; /* Coloca o ellipse acima da linha */
+        .texto {
+            text-align: justify; /* Justifica o texto */
+            margin-top: 20px; /* Espaçamento acima do texto */
         }
-        */
-
-        
-
     </style>
-
-    <body>
-
-        <div class="container">
-             <img src="~/Fotofaatsobrenos.png" />
-        </div>
-        <h1>Sobre nós</h1>
-        <div class="vertical-line">
-            @* <svg xmlns="http://www.w3.org/2000/svg" width="43" height="41" viewBox="0 0 43 41" fill="none">
-                <ellipse cx="21.5" cy="20.5" rx="21.5" ry="20.5" fill="#21689E" />
-            </svg> *@
-        </div>
-
-        
-
-
-
-    </body>
-
-
-
 </head>
+<body>
+    <div class="container">
+        <img src="~/Fotofaatsobrenos.png" />
+        <h1>Sobre nós</h1>
+    </div>
+    <div class="texto">
+        <p>
+            Estamos comprometidos com a sustentabilidade e com a preservação do meio ambiente. Nosso projeto de coleta de resíduos divide os materiais em três categorias principais: Recicláveis, Não Recicláveis e Papel Reciclável. Os materiais recicláveis são direcionados para a coleta seletiva, onde são processados e reintegrados ao ciclo produtivo, contribuindo para a redução do desperdício e da poluição ambiental. Já os materiais não recicláveis são coletados mediante pagamento, garantindo uma gestão eficiente e responsável desses resíduos.
+        </p>
+        <br />
+    </div>
+    <div class="texto">
+        <p>
+            O papel reciclável também tem seu destino adequado, sendo encaminhado para a coleta especializada, onde é transformado em novos produtos, promovendo a economia de recursos naturais e a redução da emissão de gases de efeito estufa. Fique ligado para mais detalhes sobre como você pode contribuir com nosso projeto e fazer parte dessa iniciativa transformadora! Fique ligado para mais detalhes sobre como você pode contribuir com nosso projeto e fazer parte dessa iniciativa transformadora!
+        </p>
+    </div>
+</body>
+</html>
