@@ -44,7 +44,13 @@ namespace Ecouni_Projeto.Controllers
 
                 var token = _jwtService.GenerateToken(user);
 
-                return Ok(new { Token = token });
+                return Ok(new
+                {
+                    Token = token,
+                    Cadastrarid = user.Cadastrarid, // Inclua o Cadastrarid no retorno
+                    Nome = user.Nome, // Inclua outras informações que desejar
+                    Email = user.Email
+                });
             }
             catch (InvalidOperationException)
             {

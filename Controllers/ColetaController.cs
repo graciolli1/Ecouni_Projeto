@@ -21,7 +21,7 @@ namespace Ecouni_Projeto.Controllers
         }
 
         [HttpPost("RegistrarColeta")]
-        [AllowAnonymous]
+        [Authorize]
         public ActionResult RegistrarColeta([FromBody] Coleta coleta)
         {
             if (coleta == null)
