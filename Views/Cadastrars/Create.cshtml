@@ -47,10 +47,6 @@
     <a asp-action="Index">Voltar para lista</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
-
 <style>
     /* Estilo geral da página */
     body, html {
@@ -164,3 +160,9 @@
         color: #0056b3;
     }
 </style>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

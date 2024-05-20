@@ -45,3 +45,85 @@
     <a asp-action="Edit" asp-route-id="@Model?.Cadastrarid">Editar</a> |
     <a asp-action="Index">Voltar para lista</a>
 </div>
+
+<style>
+
+    /* Estilo geral da página */
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #343a40;
+    }
+
+    /* Estilo do título */
+    h1 {
+        color: #2A629A;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 2em;
+    }
+
+    /* Linha horizontal */
+    hr {
+        border: 0;
+        height: 1px;
+        background-color: #2A629A;
+        margin-bottom: 30px;
+    }
+
+    /* Estilo do contêiner de detalhes */
+    .details-container {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Estilo dos elementos de lista de definição */
+    dl.row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    dt.col-sm-2 {
+        font-weight: bold;
+        color: #343a40;
+        width: 20%;
+        padding: 10px 0;
+    }
+
+    dd.col-sm-10 {
+        width: 80%;
+        padding: 10px 0;
+        border-bottom: 1px solid #ced4da;
+    }
+
+        /* Remover a linha inferior do último dd */
+        dd.col-sm-10:last-child {
+            border-bottom: none;
+        }
+
+    /* Estilo dos links */
+    .btn-voltar {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .btn-voltar a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            margin: 0 10px;
+        }
+
+            .btn-voltar a:hover {
+                color: #0056b3;
+            }
+
+
+</style>
