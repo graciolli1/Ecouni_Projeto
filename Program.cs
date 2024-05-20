@@ -5,6 +5,8 @@ using Ecouni_Projeto.Data;
 using Ecouni_Projeto.Services.Interfaces;
 using Ecouni_Projeto.Services.Repositories;
 using Ecouni_Projeto.Services;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -66,10 +68,10 @@ else
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseRouting();
-
 // Uso do middleware CORS
 app.UseCors("AllowReactApp");
+
+app.UseRouting();
 
 app.UseAuthorization();
 

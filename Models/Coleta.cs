@@ -13,7 +13,6 @@ namespace Ecouni_Projeto.Models
         public int TamanhoSaco { get; set; }
         [Required]
         public int Quantidade { get; set; }
-        [Required]
         public string Observacoes { get; set; }
         [Required]
         public DateTime DataRegistro { get; set; }

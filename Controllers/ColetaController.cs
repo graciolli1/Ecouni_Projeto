@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Ecouni_Projeto.Models;
 using Ecouni_Projeto.Data;
-using Microsoft.AspNetCore.Authorization; // Adicione este namespace
+using Microsoft.AspNetCore.Authorization;
+using System.Linq;
 
-namespace SuaAplicacao.Controllers
+namespace Ecouni_Projeto.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -16,19 +17,10 @@ namespace SuaAplicacao.Controllers
             _context = context;
         }
 
-        [HttpPost]
+        [HttpPost("RegistrarColeta")]
+        [AllowAnonymous]
         public ActionResult RegistrarColeta([FromBody] Coleta coleta)
         {
-            // Implemente aqui a lógica para verificar se o usuário tem permissão de acesso
-            // Você pode acessar o usuário autenticado através do User.Identity.IsAuthenticated
-            // e verificar o e-mail cadastrado do usuário (User.Identity.Name)
-
-            // Se o e-mail do usuário não for "zoomkaique1528@gmail.com", retorne um StatusCode 403 (Forbidden)
-            if (User.Identity.Name != "zoomkaique1528@gmail.com")
-            {
-                return Forbid();
-            }
-
             if (coleta == null)
             {
                 return BadRequest("Dados de coleta inválidos.");
@@ -46,14 +38,12 @@ namespace SuaAplicacao.Controllers
         }
 
         // Endpoint para recuperar os dados de coleta para gerar relatórios
-        [HttpGet("relatorios")]
-        [Authorize(Roles = "Administrador")] // Apenas administradores têm acesso aos relatórios
-        public ActionResult GerarRelatorios()
+        [HttpGet("ObterColetas")]
+        [Authorize]
+        public ActionResult<IEnumerable<Coleta>> ObterColetas()
         {
-            // Implemente aqui a lógica para gerar os relatórios com base nos dados de coleta
-            // Certifique-se de retornar os dados apenas se o usuário for um administrador
-
-            return Ok("Relatórios gerados com sucesso.");
+            var coletas = _context.Coleta.ToList(); // Recupera todas as coletas do banco de dados
+            return Json(coletas); // Retorna os dados da coleta em formato JSON
         }
     }
 }
