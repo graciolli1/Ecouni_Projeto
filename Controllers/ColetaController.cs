@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Ecouni_Projeto.Models;
 using Ecouni_Projeto.Data;
-using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +19,6 @@ namespace Ecouni_Projeto.Controllers
         }
 
         [HttpPost("RegistrarColeta")]
-        [Authorize]
         public ActionResult RegistrarColeta([FromBody] Coleta coleta)
         {
             if (coleta == null)
@@ -29,17 +26,11 @@ namespace Ecouni_Projeto.Controllers
                 return BadRequest("Dados de coleta inválidos.");
             }
 
-            // Aqui você pode adicionar lógica para validar os dados, se necessário
-
-            // Obtenha o ID do usuário autenticado (presumindo que você está usando autenticação JWT)
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            if (string.IsNullOrEmpty(userId))
+            // Verifica se o Cadastrarid foi fornecido
+            if (coleta.Cadastrarid <= 0)
             {
-                return Unauthorized("Usuário não autenticado.");
+                return BadRequest("ID do usuário é inválido.");
             }
-
-            // Define o ID do usuário na coleta
-            coleta.Cadastrarid = int.Parse(userId);
 
             // Defina a data da coleta como a data atual
             coleta.DataRegistro = DateTime.Now;
@@ -51,11 +42,11 @@ namespace Ecouni_Projeto.Controllers
         }
 
         // Endpoint para recuperar os dados de coleta para gerar relatórios
-        [HttpGet("ObterColetas")]
-        public ActionResult<IEnumerable<Coleta>> ObterColetas(int userId)
+        [HttpGet("ObterColetas/{Cadastrarid}")]
+        public ActionResult<IEnumerable<Coleta>> ObterColetas(int Cadastrarid)
         {
-            var coletas = _context.Coleta.Where(c => c.Cadastrarid == userId).ToList();
-            return Ok(coletas); // Retorna os dados da coleta em formato JSON
+            var coletas = _context.Coleta.Where(c => c.Cadastrarid == Cadastrarid).ToList();
+            return Ok(coletas);
         }
     }
 }
