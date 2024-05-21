@@ -19,16 +19,14 @@
             color: #343a40;
         }
 
-        .table > td, a {
-            text-decoration: none;
-        }
-
         /* Centralização do contêiner principal */
         .container {
             padding: 20px;
             background-color: #ffffff;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            overflow-x: auto;
         }
 
         /* Estilo do título */
@@ -39,86 +37,51 @@
             font-size: 2em;
         }
 
-        /* Estilo do parágrafo */
-        p {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-            /* Estilo dos links do parágrafo */
-            p a {
-                background-color: #2A629A;
-                color: #ffffff;
-                padding: 10px 20px;
-                border-radius: 10px;
-                text-decoration: none;
-                transition: background-color 0.3s ease;
-                display: block;
-                margin: 0 auto;
-                width: 220px;
-                text-align: center;
-            }
-
-                p a:hover {
-                    background-color: #0056b3;
-                }
-
         /* Estilo da tabela */
-        .table {
+        table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
 
-            /* Cabeçalho da tabela */
-            .table thead th {
-                background-color: #2A629A;
-                color: #ffffff;
-                padding: 10px;
-                text-align: left;
-            }
+        /* Cabeçalho da tabela */
+        th {
+            background-color: #2A629A;
+            color: #ffffff;
+            padding: 10px;
+            text-align: left;
+        }
 
-            /* Corpo da tabela */
-            .table tbody td {
-                padding: 10px;
-                border-bottom: 1px solid #ced4da;
-            }
+        /* Corpo da tabela */
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ced4da;
+        }
 
-                /* Estilo das ações */
-                .table tbody td .btn {
-                    padding: 5px 10px;
-                    border-radius: 5px;
-                    text-decoration: none;
-                    color: #ffffff;
-                    transition: background-color 0.3s ease;
-                    display: inline-block;
-                    margin-right: 5px;
-                }
+        /* Estilo dos botões */
+        .btn {
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #ffffff;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-right: 5px;
+            cursor: pointer;
+        }
 
         /* Botões de ação */
         .btn-edit {
             background-color: #ffc107;
         }
 
-            .btn-edit:hover {
-                background-color: #e0a800;
-            }
-
         .btn-details {
             background-color: #17a2b8;
         }
 
-            .btn-details:hover {
-                background-color: #138496;
-            }
-
         .btn-delete {
             background-color: #dc3545;
         }
-
-            .btn-delete:hover {
-                background-color: #c82333;
-            }
 
         /* Estilo para ocultar a borda e o fundo do campo de senha */
         .password-display {
@@ -129,52 +92,39 @@
             font-size: inherit;
             padding: 0;
         }
+
+        /* Estilo responsivo para a tabela */
+            table {
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Usuários</h1>
 
-        <p>
-            <a asp-action="Create">Cadastrar novo usuário</a>
-        </p>
-        <table class="table">
+        <table>
             <thead>
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Nome)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Email)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Telefone)
-                    </th>
-                    <th>
-                        Senha
-                    </th>
-                    <th></th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Senha</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
                     <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Telefone)</td>
+                        <td><input type="password" value="@item.Senha" class="password-display" readonly /></td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Nome)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Telefone)
-                        </td>
-                        <td>
-                            <input type="password" value="@item.Senha" class="password-display" readonly />
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.Cadastrarid" class="btn btn-edit">✏️</a> |
-                            <a asp-action="Details" asp-route-id="@item.Cadastrarid" class="btn btn-details">🔍</a> |
+                            <a asp-action="Edit" asp-route-id="@item.Cadastrarid" class="btn btn-edit">✏️</a>
+                            <a asp-action="Details" asp-route-id="@item.Cadastrarid" class="btn btn-details">🔍</a>
                             <a asp-action="Delete" asp-route-id="@item.Cadastrarid" class="btn btn-delete">🗑️</a>
                         </td>
                     </tr>
@@ -184,3 +134,4 @@
     </div>
 </body>
 </html>
+
