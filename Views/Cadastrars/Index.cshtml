@@ -119,6 +119,16 @@
             .btn-delete:hover {
                 background-color: #c82333;
             }
+
+        /* Estilo para ocultar a borda e o fundo do campo de senha */
+        .password-display {
+            border: none;
+            background-color: transparent;
+            color: #343a40;
+            font-family: inherit;
+            font-size: inherit;
+            padding: 0;
+        }
     </style>
 </head>
 <body>
@@ -141,10 +151,7 @@
                         @Html.DisplayNameFor(model => model.Telefone)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Senha)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ConfirmarSenha)
+                        Senha
                     </th>
                     <th></th>
                 </tr>
@@ -163,10 +170,7 @@
                             @Html.DisplayFor(modelItem => item.Telefone)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Senha)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ConfirmarSenha)
+                            <input type="password" value="@item.Senha" class="password-display" readonly />
                         </td>
                         <td>
                             <a asp-action="Edit" asp-route-id="@item.Cadastrarid" class="btn btn-edit">✏️</a> |
@@ -180,5 +184,3 @@
     </div>
 </body>
 </html>
-
-
