@@ -94,7 +94,8 @@ app.MapRazorPages();
 // Mapear controladores de API
 app.MapControllers();
 
-app.Run();
+// Modificação para escutar em todas as interfaces de rede na porta 5000
+app.Run("http://0.0.0.0:5000");
 
 // Função para gerar uma chave secreta com tamanho adequado
 string GenerateSecretKey()
