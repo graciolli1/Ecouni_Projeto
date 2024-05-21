@@ -14,7 +14,6 @@ namespace Ecouni_Projeto.Controllers
     [Authorize]
     public class CadastrarsController : Controller
     {
-       
         private readonly ApplicationDbContext _context;
 
         public CadastrarsController(ApplicationDbContext context)
@@ -53,14 +52,21 @@ namespace Ecouni_Projeto.Controllers
         }
 
         // POST: Cadastrars/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Cadastrarid,Nome,Email,Telefone,Senha,ConfirmarSenha")] Cadastrar cadastrar)
         {
             if (ModelState.IsValid)
             {
+                // Verifica se o email já existe
+                var emailExists = _context.Cadastrar.Any(u => u.Email == cadastrar.Email);
+                if (emailExists)
+                {
+                    ModelState.AddModelError("Email", "Este email já está sendo utilizado.");
+                    return View(cadastrar);
+                }
+
+                // Adiciona o novo usuário
                 _context.Add(cadastrar);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -85,8 +91,6 @@ namespace Ecouni_Projeto.Controllers
         }
 
         // POST: Cadastrars/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Cadastrarid,Nome,Email,Telefone,Senha,ConfirmarSenha")] Cadastrar cadastrar)
