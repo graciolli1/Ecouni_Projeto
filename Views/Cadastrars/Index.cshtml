@@ -4,175 +4,181 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="container">
-    <h1>Usuários</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Usuários</title>
+    <style>
+        /* Estilo geral da página */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
 
-    <p>
-        <a asp-action="Create">Cadastrar novo usuário</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nome)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Telefone)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Senha)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ConfirmarSenha)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-    @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Telefone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Senha)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ConfirmarSenha)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Cadastrarid">Editar</a> |
-                    <a asp-action="Details" asp-route-id="@item.Cadastrarid">Detalhes</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Cadastrarid">Deletar</a>
-                </td>
-            </tr>
-    }
-        </tbody>
-    </table>
-</div>
-
-<style>
-
-    <style >
-    /* Estilo geral da página */
-    body, html {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
-        color: #343a40;
-    }
-    
-    .tabel > td, a {
-        text-decoration: none;
-    }
-
-    /* Centralização do contêiner principal */
-    .container {
-        padding: 20px;
-        background-color: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Estilo do título */
-    h1 {
-        color: #2A629A;
-        margin-bottom: 20px;
-        text-align: center;
-        font-size: 2em;
-    }
-
-    /* Estilo do parágrafo */
-    p {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-        /* Estilo dos links do parágrafo */
-        p a {
-            background-color: #2A629A;
-            color: #ffffff;
-            padding: 10px 20px;
-            border-radius: 10px;
+        .table > td, a {
             text-decoration: none;
-            transition: background-color 0.3s ease;
-            display: block;
-            margin: 0 auto;
-            width: 220px;
+        }
+
+        /* Centralização do contêiner principal */
+        .container {
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo do título */
+        h1 {
+            color: #2A629A;
+            margin-bottom: 20px;
             text-align: center;
+            font-size: 2em;
         }
 
-            p a:hover {
-                background-color: #0056b3;
-            }
-
-    /* Estilo da tabela */
-    .table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-
-        /* Cabeçalho da tabela */
-        .table thead th {
-            background-color: #2A629A;
-            color: #ffffff;
-            padding: 10px;
-            text-align: left;
+        /* Estilo do parágrafo */
+        p {
+            text-align: center;
+            margin-bottom: 20px;
         }
 
-        /* Corpo da tabela */
-        .table tbody td {
-            padding: 10px;
-            border-bottom: 1px solid #ced4da;
-        }
-
-            /* Estilo das ações */
-            .table tbody td .btn {
-                padding: 5px 10px;
-                border-radius: 5px;
-                text-decoration: none;
+            /* Estilo dos links do parágrafo */
+            p a {
+                background-color: #2A629A;
                 color: #ffffff;
+                padding: 10px 20px;
+                border-radius: 10px;
+                text-decoration: none;
                 transition: background-color 0.3s ease;
-                display: inline-block;
-                margin-right: 5px;
+                display: block;
+                margin: 0 auto;
+                width: 220px;
+                text-align: center;
             }
 
-    /* Botões de ação */
-    .btn-edit {
-        background-color: #ffc107;
-    }
+                p a:hover {
+                    background-color: #0056b3;
+                }
 
-        .btn-edit:hover {
-            background-color: #e0a800;
+        /* Estilo da tabela */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
         }
 
-    .btn-details {
-        background-color: #17a2b8;
-    }
+            /* Cabeçalho da tabela */
+            .table thead th {
+                background-color: #2A629A;
+                color: #ffffff;
+                padding: 10px;
+                text-align: left;
+            }
 
-        .btn-details:hover {
-            background-color: #138496;
+            /* Corpo da tabela */
+            .table tbody td {
+                padding: 10px;
+                border-bottom: 1px solid #ced4da;
+            }
+
+                /* Estilo das ações */
+                .table tbody td .btn {
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    text-decoration: none;
+                    color: #ffffff;
+                    transition: background-color 0.3s ease;
+                    display: inline-block;
+                    margin-right: 5px;
+                }
+
+        /* Botões de ação */
+        .btn-edit {
+            background-color: #ffc107;
         }
 
-    .btn-delete {
-        background-color: #dc3545;
-    }
+            .btn-edit:hover {
+                background-color: #e0a800;
+            }
 
-        .btn-delete:hover {
-            background-color: #c82333;
+        .btn-details {
+            background-color: #17a2b8;
         }
 
+            .btn-details:hover {
+                background-color: #138496;
+            }
 
-</style>
+        .btn-delete {
+            background-color: #dc3545;
+        }
+
+            .btn-delete:hover {
+                background-color: #c82333;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Usuários</h1>
+
+        <p>
+            <a asp-action="Create">Cadastrar novo usuário</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Telefone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Senha)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ConfirmarSenha)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Telefone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Senha)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ConfirmarSenha)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Cadastrarid" class="btn btn-edit">✏️</a> |
+                            <a asp-action="Details" asp-route-id="@item.Cadastrarid" class="btn btn-details">🔍</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Cadastrarid" class="btn btn-delete">🗑️</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
 
