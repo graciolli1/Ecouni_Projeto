@@ -4,175 +4,186 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Cadastrar novo Usuário</h1>
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Telefone" class="control-label"></label>
-                <input asp-for="Telefone" class="form-control" />
-                <span asp-validation-for="Telefone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Senha" class="control-label"></label>
-                <input asp-for="Senha" class="form-control" />
-                <span asp-validation-for="Senha" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ConfirmarSenha" class="control-label"></label>
-                <input asp-for="ConfirmarSenha" class="form-control" />
-                <span asp-validation-for="ConfirmarSenha" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Cadastrar" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div class="btn-voltar">
-    <a asp-action="Index">Voltar para lista</a>
-</div>
-
-<style>
-    /* Estilo geral da página */
-    body, html {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
-        color: #343a40;
-    }
-
-    /* Centralização do contêiner principal */
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    /* Centralização do conteúdo da linha */
-    .row {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-    }
-
-    h1 {
-        color: #2A629A;
-        margin-bottom: 20px;
-        text-align: center;
-    }
-
-    /* Linha horizontal */
-    hr {
-        border: 0;
-        height: 1px;
-        background-color: #2A629A;
-        margin-bottom: 30px;
-    }
-
-    /* Estilo da coluna */
-    .col-md-4 {
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        max-width: 400px;
-        width: 100%;
-        margin-left: 25px;
-        border-radius: 20px;
-    }
-
-    /* Estilo do formulário */
-    form {
-        display: flex;
-        flex-direction: column;
-    }
-
-    /* Estilo dos grupos de formulário */
-    .form-group {
-        margin-bottom: 20px;
-    }
-
-        /* Estilo dos rótulos */
-        .form-group label {
-            font-weight: bold;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Cadastrar novo Usuário</title>
+    <style>
+        /* Estilo geral da página */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
             color: #343a40;
         }
 
-    /* Estilo dos campos de entrada */
-    .form-control {
-        border: 1px solid #ced4da;
-        border-radius: 4px;
-        padding: 10px;
-        font-size: 14px;
-    }
-
-    /* Estilo das mensagens de validação */
-    .text-danger {
-        font-size: 12px;
-        color: #dc3545;
-    }
-
-    /* Estilo do botão de submit */
-    .btn-primary {
-        background-color: #21689E;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 20px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        width: 100%;
-    }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
+        /* Centralização do contêiner principal */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-wrap:wrap;
         }
 
-    /* Estilo do link de voltar */
-    .btn-voltar > a {
-        color: #007bff;
-        text-decoration: none;
-        transition: color 0.3s ease;
-        text-align: center;
-        display: block;
-        margin-top: 20px;
-        text-decoration: none;
-    }
+        /* Centralização do conteúdo da linha */
+        .row {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
 
-    .btn-voltar:hover {
-        color: #0056b3;
-    }
+        h1 {
+            color: #2A629A;
+            margin-bottom: 20px;
+            text-align: center;
+        }
 
-    .footer {
-        position: relative;
-        bottom: 0;
-        width: 100%;
-        white-space: nowrap;
-        line-height: 60px;
-        margin-top: 150px;
-    }
+        /* Linha horizontal */
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #2A629A;
+            margin-bottom: 30px;
+        }
 
-</style>
+        /* Estilo da coluna */
+        .col-md-4 {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            border-radius: 20px;
+        }
 
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        /* Estilo do formulário */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Estilo dos grupos de formulário */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            /* Estilo dos rótulos */
+            .form-group label {
+                font-weight: bold;
+                color: #343a40;
+            }
+
+        /* Estilo dos campos de entrada */
+        .form-control {
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        /* Estilo das mensagens de validação */
+        .text-danger {
+            font-size: 12px;
+            color: #dc3545;
+        }
+
+        /* Estilo do botão de submit */
+        .btn-primary {
+            background-color: #21689E;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        /* Estilo do link de voltar */
+        .btn-voltar > a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            text-align: center;
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            margin-bottom: 200px;
+        }
+
+            .btn-voltar > a:hover {
+                color: #0056b3;
+            }
+
+        .footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            white-space: nowrap;
+            line-height: 60px;
+            margin-top: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h1>Cadastrar novo Usuário</h1>
+                <hr />
+                <form asp-action="Create" onsubmit="return validateForm()">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Nome" class="control-label"></label>
+                        <input asp-for="Nome" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Telefone" class="control-label"></label>
+                        <input asp-for="Telefone" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Senha" class="control-label"></label>
+                        <input id="password" asp-for="Senha" type="password" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ConfirmarSenha" class="control-label"></label>
+                        <input id="confirm_password" asp-for="ConfirmarSenha" type="password" class="form-control" />
+                        <span id="password_error" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="btn-voltar">
+            <a asp-action="Index">Voltar para lista</a>
+        </div>
+    </div>
+</body>
+<script>
+    function validateForm() {
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirm_password").value;
+        if (password != confirmPassword) {
+            document.getElementById("password_error").innerHTML = "As senhas não correspondem!";
+            return false;
+        }
+        return true;
     }
-}
+</script>
+</html>
+
