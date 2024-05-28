@@ -18,9 +18,7 @@ namespace Ecouni_Projeto.Services.Repositories
 
         public async Task<Cadastrar> GetUserByEmailAsync(string email)
         {
-            var user = await _context.Cadastrar.FirstOrDefaultAsync(u => u.Email == email);
-
-            return user ?? throw new Exception("Usuário não encontrado");
+            return await _context.Cadastrar.FirstOrDefaultAsync(u => u.Email == email);
         }
 
         public async Task AddUserAsync(Cadastrar user)

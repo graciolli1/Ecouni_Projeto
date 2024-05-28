@@ -62,8 +62,8 @@ namespace Ecouni_Projeto.Controllers
             }
         }
 
-        [HttpPost("register")]
-        public async Task<ActionResult> Register(Cadastrar model)
+        [HttpPost("registro")]
+        public async Task<ActionResult<Cadastrar>> Registro(Cadastrar model)
         {
             try
             {
@@ -72,23 +72,31 @@ namespace Ecouni_Projeto.Controllers
                     return BadRequest(ModelState);
                 }
 
+                if (string.IsNullOrEmpty(model.Email))
+                {
+                    return BadRequest("O e-mail é obrigatório para o registro.");
+                }
+
                 var newUser = await _userService.RegisterAsync(model.Nome, model.Email, model.Telefone, model.Senha, model.ConfirmarSenha);
+
+                if (newUser == null)
+                {
+                    return BadRequest("Erro ao registrar usuário");
+                }
 
                 return Created("api/auth/login", newUser);
             }
-            catch (ArgumentException)
+            catch (ArgumentException ex)
             {
-                return BadRequest("Argumento inválido");
-            }
-            catch (DbUpdateException)
-            {
-                return BadRequest("Erro ao registrar usuário");
+                return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
             }
         }
+
+
 
         [HttpGet("user/{Cadastrarid}")]
         //[Authorize]

@@ -89,7 +89,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-app.MapRazorPages();
 
 // Mapeamento de controladores de API
 app.MapControllers();

@@ -79,13 +79,15 @@ namespace Ecouni_Projeto.Services
 
                 return newUser;
             }
-            catch (ArgumentException)
+            catch (ArgumentException ex)
             {
-                throw; // Propaga a exceção para que ela seja tratada no controlador
+                // Log detalhado para ArgumentException
+                throw new ArgumentException($"Erro ao registrar usuário: {ex.Message}", ex);
             }
             catch (Exception ex)
             {
-                throw new Exception("Erro ao registrar usuário. Detalhes: " + ex.Message);
+                // Log detalhado para Exception
+                throw new Exception($"Erro ao registrar usuário. Detalhes: {ex.Message}", ex);
             }
         }
 
