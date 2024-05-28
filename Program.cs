@@ -1,6 +1,5 @@
 using System;
 using System.Security.Cryptography;
-using System.Text;
 using Ecouni_Projeto.Data;
 using Ecouni_Projeto.Services.Interfaces;
 using Ecouni_Projeto.Services.Repositories;
@@ -14,7 +13,7 @@ using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Configuração da string de conexão
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
     ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
@@ -40,20 +39,20 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         builder =>
         {
-            builder.WithOrigins("*") // Substitua pelo endereço do seu aplicativo React
+            builder.WithOrigins("*") // Substitua pelo endereço do seu aplicativo React se necessário
                    .AllowAnyMethod()
                    .AllowAnyHeader();
         });
 });
 
-// Aqui está onde você pode usar a função GenerateSecretKey() para obter a chave secreta
+// Geração da chave secreta para JWT
 var secretKey = GenerateSecretKey();
 
 builder.Services.AddSingleton<IJwtService>(new JwtService(secretKey)); // Registro do serviço JwtService
 builder.Services.AddScoped<IUserService, UserService>(); // Registro do serviço UserService
 builder.Services.AddScoped<IUserRepository, UserRepository>(); // Registro do serviço UserRepository
 
-// Adicione a configuração de controladores e formatação JSON
+// Adição de controladores e configuração da formatação JSON
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -63,7 +62,7 @@ builder.Services.AddControllers()
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configuração do pipeline de requisições HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
@@ -82,19 +81,20 @@ app.UseCors("AllowReactApp");
 
 app.UseRouting();
 
-// Adicione middleware de autenticação e autorização
+// Adição de middleware de autenticação e autorização
 app.UseAuthentication();
 app.UseAuthorization();
 
+// Configuração das rotas de controle
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
 
-// Mapear controladores de API
+// Mapeamento de controladores de API
 app.MapControllers();
 
-// Modificação para escutar em todas as interfaces de rede na porta 5000
+// Configuração para escutar em todas as interfaces de rede na porta 5000
 app.Run("http://0.0.0.0:5000");
 
 // Função para gerar uma chave secreta com tamanho adequado
