@@ -55,5 +55,52 @@ namespace Ecouni_Projeto.Controllers
             var coletas = _context.Coleta.ToList();
             return Ok(coletas);
         }
+
+        // Método para editar uma coleta
+        [HttpPut("EditarColeta/{Cadastrarid}")]
+        public ActionResult EditarColeta(int Cadastrarid, [FromBody] Coleta coletaAtualizada)
+        {
+            if (coletaAtualizada == null || Cadastrarid <= 0)
+            {
+                return BadRequest("Dados de coleta inválidos.");
+            }
+
+            var coletaExistente = _context.Coleta.FirstOrDefault(c => c.Cadastrarid == Cadastrarid);
+            if (coletaExistente == null)
+            {
+                return NotFound("Coleta não encontrada.");
+            }
+
+            // Atualiza os campos da coleta
+            coletaExistente.TipoResiduo = coletaAtualizada.TipoResiduo;
+            coletaExistente.TamanhoSaco = coletaAtualizada.TamanhoSaco;
+            coletaExistente.Quantidade = coletaAtualizada.Quantidade;
+
+            _context.Coleta.Update(coletaExistente);
+            _context.SaveChanges();
+
+            return Ok("Coleta atualizada com sucesso.");
+        }
+
+        // Método para deletar uma coleta
+        [HttpDelete("DeletarColeta/{Cadastrarid}")]
+        public ActionResult DeletarColeta(int Cadastrarid)
+        {
+            if (Cadastrarid <= 0)
+            {
+                return BadRequest("ID inválido.");
+            }
+
+            var coletaExistente = _context.Coleta.FirstOrDefault(c => c.Cadastrarid == Cadastrarid);
+            if (coletaExistente == null)
+            {
+                return NotFound("Coleta não encontrada.");
+            }
+
+            _context.Coleta.Remove(coletaExistente);
+            _context.SaveChanges();
+
+            return Ok("Coleta deletada com sucesso.");
+        }
     }
 }
