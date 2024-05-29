@@ -48,5 +48,12 @@ namespace Ecouni_Projeto.Controllers
             var coletas = _context.Coleta.Where(c => c.Cadastrarid == Cadastrarid).ToList();
             return Ok(coletas);
         }
+
+        [HttpGet("ObterTodasColetas")]
+        public ActionResult<IEnumerable<Coleta>> ObterTodasColetas()
+        {
+            var coletas = _context.Coleta.ToList();
+            return Ok(coletas);
+        }
     }
 }
