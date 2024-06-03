@@ -10,10 +10,6 @@
     <meta charset="utf-8" />
     <title>Usuários</title>
 
-    <p> 
-        <a asp-action="Create">Cadastrar novo usuário</a>
-    </p>
-
     <style>
         /* Estilo geral da página */
         body, html {
@@ -99,15 +95,37 @@
         }
 
         /* Estilo responsivo para a tabela */
-            table {
-                font-size: 12px;
-            }
+        table {
+            font-size: 12px;
         }
+
+        .container > p {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Estilo do botão "Cadastrar novo usuário" */
+        .btn-create {
+            background-color: #2A629A;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+            .btn-create:hover {
+                background-color: #0056b3;
+            }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Usuários</h1>
+        <p>
+            <a asp-action="Create" class="btn-create">Cadastrar novo usuário</a>
+        </p>
 
         <table>
             <thead>
@@ -139,4 +157,3 @@
     </div>
 </body>
 </html>
-
