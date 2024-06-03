@@ -56,16 +56,15 @@ namespace Ecouni_Projeto.Controllers
             return Ok(coletas);
         }
 
-        // Método para editar uma coleta
-        [HttpPut("EditarColeta/{Cadastrarid}")]
-        public ActionResult EditarColeta(int Cadastrarid, [FromBody] Coleta coletaAtualizada)
+        [HttpPut("EditarColeta/{Cadastrarid}/{id}")]
+        public ActionResult EditarColeta(int Cadastrarid, int id, [FromBody] Coleta coletaAtualizada)
         {
-            if (coletaAtualizada == null || Cadastrarid <= 0)
+            if (coletaAtualizada == null || Cadastrarid <= 0 || id <= 0)
             {
                 return BadRequest("Dados de coleta inválidos.");
             }
 
-            var coletaExistente = _context.Coleta.FirstOrDefault(c => c.Cadastrarid == Cadastrarid);
+            var coletaExistente = _context.Coleta.FirstOrDefault(c => c.Cadastrarid == Cadastrarid && c.Id == id);
             if (coletaExistente == null)
             {
                 return NotFound("Coleta não encontrada.");
@@ -82,16 +81,28 @@ namespace Ecouni_Projeto.Controllers
             return Ok("Coleta atualizada com sucesso.");
         }
 
-        // Método para deletar uma coleta
-        [HttpDelete("DeletarColeta/{Cadastrarid}")]
-        public ActionResult DeletarColeta(int Cadastrarid)
+        [HttpGet("ObterColeta/{Cadastrarid}/{id}")]
+        public ActionResult ObterColeta(int Cadastrarid, int id)
         {
-            if (Cadastrarid <= 0)
+            var coleta = _context.Coleta.FirstOrDefault(c => c.Cadastrarid == Cadastrarid && c.Id == id);
+
+            if (coleta == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(coleta);
+        }
+
+        [HttpDelete("DeletarColeta/{Cadastrarid}/{id}")]
+        public ActionResult DeletarColeta(int Cadastrarid, int id)
+        {
+            if (Cadastrarid <= 0 || id <= 0)
             {
                 return BadRequest("ID inválido.");
             }
 
-            var coletaExistente = _context.Coleta.FirstOrDefault(c => c.Cadastrarid == Cadastrarid);
+            var coletaExistente = _context.Coleta.FirstOrDefault(c => c.Cadastrarid == Cadastrarid && c.Id == id);
             if (coletaExistente == null)
             {
                 return NotFound("Coleta não encontrada.");
