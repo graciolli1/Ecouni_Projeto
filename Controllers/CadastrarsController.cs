@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Ecouni_Projeto.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class CadastrarsController : Controller
     {
         private readonly ApplicationDbContext _context;

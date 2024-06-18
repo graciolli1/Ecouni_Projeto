@@ -10,6 +10,7 @@
   <ItemGroup>
     <Compile Remove="Controllers\ContatosController.cs" />
     <Compile Remove="Models\Contato.cs" />
+    <Compile Remove="Models\RegisterModel.cs" />
   </ItemGroup>
 
   <ItemGroup>
