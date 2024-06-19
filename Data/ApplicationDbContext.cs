@@ -9,6 +9,7 @@ namespace Ecouni_Projeto.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+             Database.EnsureCreated();
         }
         public DbSet<Coleta> Coleta { get; set; }
         public DbSet<Cadastrar> Cadastrar { get; set; }
