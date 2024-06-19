@@ -26,13 +26,11 @@ namespace Ecouni_Projeto.Controllers
                 return BadRequest("Dados de coleta inválidos.");
             }
 
-            // Verifica se o Cadastrarid foi fornecido
             if (coleta.Cadastrarid <= 0)
             {
                 return BadRequest("ID do usuário é inválido.");
             }
 
-            // Defina a data da coleta como a data atual
             coleta.DataRegistro = DateTime.Now;
 
             _context.Coleta.Add(coleta);
@@ -41,7 +39,6 @@ namespace Ecouni_Projeto.Controllers
             return Ok("Coleta registrada com sucesso.");
         }
 
-        // Endpoint para recuperar os dados de coleta para gerar relatórios
         [HttpGet("ObterColetas/{Cadastrarid}")]
         public ActionResult<IEnumerable<Coleta>> ObterColetas(int Cadastrarid)
         {
@@ -70,7 +67,6 @@ namespace Ecouni_Projeto.Controllers
                 return NotFound("Coleta não encontrada.");
             }
 
-            // Atualiza os campos da coleta
             coletaExistente.TipoResiduo = coletaAtualizada.TipoResiduo;
             coletaExistente.TamanhoSaco = coletaAtualizada.TamanhoSaco;
             coletaExistente.Quantidade = coletaAtualizada.Quantidade;

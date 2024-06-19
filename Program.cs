@@ -13,7 +13,6 @@ using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configuração da string de conexão
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
     ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
@@ -33,26 +32,23 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
-// Configuração do CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp",
         builder =>
         {
-            builder.WithOrigins("*") // Substitua pelo endereço do seu aplicativo React se necessário
+            builder.WithOrigins("*") 
                    .AllowAnyMethod()
                    .AllowAnyHeader();
         });
 });
 
-// Geração da chave secreta para JWT
 var secretKey = GenerateSecretKey();
 
-builder.Services.AddSingleton<IJwtService>(new JwtService(secretKey)); // Registro do serviço JwtService
-builder.Services.AddScoped<IUserService, UserService>(); // Registro do serviço UserService
-builder.Services.AddScoped<IUserRepository, UserRepository>(); // Registro do serviço UserRepository
+builder.Services.AddSingleton<IJwtService>(new JwtService(secretKey));
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>(); 
 
-// Adição de controladores e configuração da formatação JSON
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -62,7 +58,6 @@ builder.Services.AddControllers()
 
 var app = builder.Build();
 
-// Configuração do pipeline de requisições HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
@@ -76,34 +71,26 @@ else
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-// Uso do middleware CORS
 app.UseCors("AllowReactApp");
 
 app.UseRouting();
 
-// Adição de middleware de autenticação e autorização
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Configuração das rotas de controle
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-// Mapeamento de controladores de API
 app.MapControllers();
-
-// Configuração para escutar em todas as interfaces de rede na porta 5000
-//app.Urls.Add("http://0.0.0.0:5000");
 
 app.Run();
 
-// Função para gerar uma chave secreta com tamanho adequado
 string GenerateSecretKey()
 {
     using (var rng = RandomNumberGenerator.Create())
     {
-        int keySize = 256 / 8; // Tamanho da chave em bytes (256 bits)
+        int keySize = 256 / 8; 
         var keyBytes = new byte[keySize];
         rng.GetBytes(keyBytes);
         return Convert.ToBase64String(keyBytes);

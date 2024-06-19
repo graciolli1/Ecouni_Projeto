@@ -99,7 +99,6 @@ namespace Ecouni_Projeto.Controllers
 
 
         [HttpGet("user/{Cadastrarid}")]
-        //[Authorize]
         public async Task<ActionResult<Cadastrar>> GetUser(int Cadastrarid)
         {
             var user = await _userService.GetUserByIdAsync(Cadastrarid);
@@ -111,7 +110,6 @@ namespace Ecouni_Projeto.Controllers
         }
 
         [HttpPut("user/{Cadastrarid}")]
-        //[Authorize]
         public async Task<IActionResult> UpdateUser(int Cadastrarid, [FromBody] Cadastrar updatedUser)
         {
             try
@@ -122,21 +120,17 @@ namespace Ecouni_Projeto.Controllers
                     return NotFound();
                 }
 
-                // Atualize apenas as propriedades relevantes
                 user.Nome = updatedUser.Nome;
                 user.Telefone = updatedUser.Telefone;
                 user.Email = updatedUser.Email;
 
-                // Verifique se a senha e a confirmação de senha estão presentes e correspondem
                 if (!string.IsNullOrEmpty(updatedUser.Senha) && !string.IsNullOrEmpty(updatedUser.ConfirmarSenha))
                 {
-                    // Verifique se a senha e a confirmação de senha correspondem
                     if (updatedUser.Senha != updatedUser.ConfirmarSenha)
                     {
                         return BadRequest("A senha e a confirmação de senha não correspondem.");
                     }
 
-                    // Atualize a senha
                     user.Senha = updatedUser.Senha;
                 }
 
@@ -146,7 +140,6 @@ namespace Ecouni_Projeto.Controllers
             }
             catch (Exception ex)
             {
-                // Trate outros tipos de exceção, se necessário
                 return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
             }
         }

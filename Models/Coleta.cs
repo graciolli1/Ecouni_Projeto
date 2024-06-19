@@ -17,7 +17,7 @@ namespace Ecouni_Projeto.Models
         [Required]
         public DateTime DataRegistro { get; set; }
         [Required]
-        public int Cadastrarid { get; set; } // Adiciona o campo para armazenar o ID do usuário
-        public Cadastrar Cadastrar { get; set; } // Adiciona a propriedade de navegação para o usuário
+        public int Cadastrarid { get; set; }
+        public Cadastrar Cadastrar { get; set; } 
     }
 }
