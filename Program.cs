@@ -94,7 +94,9 @@ app.MapControllerRoute(
 app.MapControllers();
 
 // Configuração para escutar em todas as interfaces de rede na porta 5000
-app.Run("http://0.0.0.0:5000");
+//app.Urls.Add("http://0.0.0.0:5000");
+
+app.Run();
 
 // Função para gerar uma chave secreta com tamanho adequado
 string GenerateSecretKey()
