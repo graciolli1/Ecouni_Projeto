@@ -12,25 +12,23 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            font-family: Arial, sans-serif;
         }
 
         .container {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             padding: 15px;
-            max-width: 2000px;
-            margin: 0px;
+            max-width: 100%;
+            margin: 0 auto;
+            min-height: 100vh;
         }
 
-            .container > div {
-                flex: 1;
-                margin-bottom: 20px;
-            }
-
-
         p {
-            font-size: 1.8vw; /* Usando unidade relativa vw para o texto */
-            margin-top: 250px;
+            font-size: calc(1.5rem + 1vw); /* Ajusta o tamanho do texto de acordo com a largura da viewport */
+            margin-top: 50px;
             color: #0F334D;
             text-align: center;
         }
@@ -39,30 +37,27 @@
             text-decoration: none;
         }
 
-       .celular > img {
-            width: 55%;
-            margin-left: 350px;
+        .celular img {
+            width: 100%;
+            max-width: 300px; /* Limita o tamanho máximo da imagem */
+            height: auto; /* Mantém a proporção da imagem */
         }
 
-        img{
-            width: 100px;
-            margin-left: 30px;
-        }
+       
     </style>
 </head>
 <body>
-
     <div class="container">
         <div>
-@*             <h1>Reciclagem de Resíduos</h1>
-            *@
-           @*  <a href="https://www.youtube.com/watch?v=qT3R2p8qLSU"> *@
+            
                 <p>
                     Clique aqui para fazer o download do APP.
                 </p>
-            </a>
+           
         </div>
         <div class="celular">
             <img src="~/celularcomlogo.png" alt="Descrição da imagem">
         </div>
+    </div>
 </body>
+</html>
