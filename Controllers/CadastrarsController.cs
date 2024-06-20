@@ -93,7 +93,7 @@ namespace Ecouni_Projeto.Controllers
         // POST: Cadastrars/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Cadastrarid,Nome,Email,Telefone,Senha,ConfirmarSenha")] Cadastrar cadastrar)
+        public async Task<IActionResult> Edit(int id, Cadastrar cadastrar)
         {
             if (id != cadastrar.Cadastrarid)
             {
